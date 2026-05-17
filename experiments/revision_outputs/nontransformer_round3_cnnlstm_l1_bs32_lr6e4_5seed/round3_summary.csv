@@ -1,0 +1,2 @@
+model,n_seeds,rmse_mean,rmse_std,mae_mean,r2_mean,runtime_seconds_mean,peak_gpu_memory_mb_mean
+cnn_lstm_hybrid,5,1.3139746242214732,0.06535584785372235,0.9287107348442077,0.9565717245679638,309.8681689599995,3065.28603515625

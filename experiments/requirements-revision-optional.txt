@@ -1,0 +1,7 @@
+# Optional dependencies for revision-aligned secondary analyses.
+#
+# Revision skeleton alignment:
+# - Section 3.11 / SHAP temporal attribution for the LightGBM baseline
+#
+# The first-round comparable experiments can run without this file.
+shap

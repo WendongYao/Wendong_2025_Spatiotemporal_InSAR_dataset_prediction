@@ -1,0 +1,20 @@
+{
+  "model": "lightgbm",
+  "interpolation_method": "linear",
+  "csv_path": "C:\\Users\\Jupyter\\Desktop\\pytorch-tcn-main\\EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+  "grid_size": 256,
+  "history_length": 300,
+  "eligible_pixels": 53427,
+  "train_pixels": 37094,
+  "val_pixels": 8532,
+  "test_pixels": 7801,
+  "n_valid_pixels": 7801,
+  "mse": 6.723677158355713,
+  "rmse": 2.593005429681109,
+  "mae": 1.1679171323776245,
+  "r2": 0.8742142159005936,
+  "best_iteration": 142,
+  "device_type": "gpu",
+  "runtime_seconds": 4.353297199995723,
+  "peak_gpu_memory_mb": 17.25
+}

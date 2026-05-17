@@ -1,0 +1,2 @@
+model,interpolation_method,csv_path,grid_size,history_length,eligible_pixels,train_pixels,val_pixels,test_pixels,n_valid_pixels,mse,rmse,mae,r2,best_iteration,device_type,runtime_seconds,peak_gpu_memory_mb
+lightgbm,linear,C:\Users\Jupyter\Desktop\pytorch-tcn-main\EGMS_L3_E32N34_100km_U_2018_2022_1.csv,256,300,53427,37088,7856,8483,8483,2.1492161750793457,1.4660205234168264,1.0452735424041748,0.9293245391439551,149,gpu,4.258255499997176,17.25

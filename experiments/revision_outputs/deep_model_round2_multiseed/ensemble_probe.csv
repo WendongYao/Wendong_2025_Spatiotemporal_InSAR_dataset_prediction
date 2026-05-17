@@ -1,0 +1,3 @@
+ensemble,models,n_seeds,rmse_mean,rmse_std,mae_mean,r2_mean
+patch_unet_plus_hybrid,patch_unet_residual+temporal_linear_hybrid,5,1.402421907854298,0.08212174989266349,0.9835073471069335,0.9507244304289522
+patch_unet_plus_tccnn_plus_hybrid,patch_unet_residual+temporal_channel_cnn+temporal_linear_hybrid,5,1.4024695511794756,0.08440002631263399,0.9818584322929382,0.9507030639049912

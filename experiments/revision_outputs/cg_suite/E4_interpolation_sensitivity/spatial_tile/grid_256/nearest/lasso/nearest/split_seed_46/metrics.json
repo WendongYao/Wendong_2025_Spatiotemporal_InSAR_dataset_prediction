@@ -1,0 +1,22 @@
+{
+  "model": "lasso",
+  "interpolation_method": "nearest",
+  "csv_path": "C:\\Users\\Jupyter\\Desktop\\pytorch-tcn-main\\EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+  "grid_size": 256,
+  "history_length": 300,
+  "eligible_pixels": 65536,
+  "train_pixels": 46080,
+  "val_pixels": 10240,
+  "test_pixels": 9216,
+  "n_valid_pixels": 9216,
+  "mse": 2.892735004425049,
+  "rmse": 1.700804222838434,
+  "mae": 1.0690810680389404,
+  "r2": 0.9301366692173689,
+  "best_alpha": 0.0001,
+  "best_val_rmse": 1.962496280670166,
+  "best_epoch": 600,
+  "device": "cuda",
+  "runtime_seconds": 6.847836200002348,
+  "peak_gpu_memory_mb": 278.79638671875
+}

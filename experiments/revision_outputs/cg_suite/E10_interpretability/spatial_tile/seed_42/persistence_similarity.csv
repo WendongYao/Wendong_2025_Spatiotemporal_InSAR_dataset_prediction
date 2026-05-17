@@ -1,0 +1,5 @@
+model,persistence_similarity_corr
+persistence,1.0
+lightgbm,0.9679836456966318
+cnn_tcn,-0.001694648470191895
+cnn_lstm_maskaware,-0.005293756070549715

@@ -1,0 +1,9 @@
+name: found_training_project
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements-revision.txt
+      - -r requirements-revision-optional.txt
