@@ -1,2 +1,0 @@
-model,interpolation_method,csv_path,grid_size,history_length,eligible_pixels,train_pixels,val_pixels,test_pixels,n_valid_pixels,mse,rmse,mae,r2,best_alpha,best_val_rmse,best_epoch,device,runtime_seconds,peak_gpu_memory_mb
-lasso,linear,C:\Users\Jupyter\Desktop\pytorch-tcn-main\EGMS_L3_E32N34_100km_U_2018_2022_1.csv,512,300,213961,150067,32241,31653,31653,1.917409896850586,1.3847057076688123,0.9822311401367188,0.944697279235252,0.0001,1.2695837020874023,600,cuda,7.780899800010957,751.833984375

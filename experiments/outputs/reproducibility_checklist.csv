@@ -1,8 +1,0 @@
-item,status
-README,present
-environment.yml,present
-configs,present
-splits,present
-scripts/reproduce_all,present
-outputs/manifest.csv,present
-LICENSE,present

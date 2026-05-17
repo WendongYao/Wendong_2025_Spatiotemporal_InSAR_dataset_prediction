@@ -7,6 +7,11 @@ Project root: `C:\Users\Jupyter\Desktop\found_training_project`
 
 This report records the full experiment line executed in the standalone `found_training_project` bundle from the start of the CAGEO additional-experiment phase up to the current non-Transformer deep-learning exploration.
 
+Minimal public-repository note:
+
+- the GitHub reproduction repository intentionally keeps only code, setup files, dataset instructions, and this report
+- generated artifacts mentioned below, such as `revision_outputs/`, `outputs/`, `splits/`, and historical `configs/config_*.json`, are recreated locally when the run scripts are executed and are not versioned in the minimal repository
+
 The report covers:
 
 - dataset source and loading pipeline
@@ -876,9 +881,9 @@ The following items are still incomplete or outside the current standalone bundl
 If someone needs the most important current files only, read:
 
 1. `CAGEO_COMPLETE_EXPERIMENT_REPORT.md`
-2. `CURRENT_EXPERIMENT_REPORT.md`
-3. `revision_outputs/nontransformer_round3_cnnlstm_l1_5seed/combined_summary.csv`
-4. `revision_outputs/nontransformer_round3_cnnlstm_l1_bs32_lr6e4_5seed/round3_summary.csv`
-5. `revision_outputs/nontransformer_round3_cnntcn_multiseed/round3_summary.csv`
-6. `revision_outputs/deep_model_round2_hybrid_v2_multiseed/round2_summary.csv`
-7. `revision_outputs/cg_suite/E4_interpolation_sensitivity/spatial_tile/grid_256/forecast_metric_summary.csv`
+2. `REPRODUCTION_INSTRUCTIONS.md`
+3. `revision_config.py`
+4. `revision_utils.py`
+5. `deep_patch_models.py`
+6. `run_cg_additional_suite.py`
+7. `run_nontransformer_round3.py`

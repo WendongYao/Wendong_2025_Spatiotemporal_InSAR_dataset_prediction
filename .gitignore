@@ -1,0 +1,16 @@
+# dataset
+experiments/datasets/*.csv
+experiments/datasets/*.parquet
+
+# generated experiment artifacts
+experiments/revision_outputs/
+experiments/outputs/
+experiments/splits/
+experiments/configs/config_*.json
+
+# caches and environments
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+experiments/.venv/

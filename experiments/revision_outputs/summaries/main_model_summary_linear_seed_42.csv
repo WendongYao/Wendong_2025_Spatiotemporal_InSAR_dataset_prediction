@@ -1,5 +1,0 @@
-model,interpolation_method,rmse,mae,r2,test_pixels,device,metrics_path
-cnn_lstm,linear,6.850335284192984,4.4831156730651855,-0.35085010486156776,8015,cuda,C:\Users\Jupyter\Desktop\found_training_project\revision_outputs\cnn_lstm\linear\split_seed_42\metrics.json
-goodmodel_aligned,linear,6.850335284192984,4.4831156730651855,-0.35085010486156776,8015,cuda,C:\Users\Jupyter\Desktop\found_training_project\revision_outputs\goodmodel_aligned\linear\split_seed_42\metrics.json
-lasso,linear,1.3404790856687379,0.9489303231239319,0.948274633405396,8015,cuda,C:\Users\Jupyter\Desktop\found_training_project\revision_outputs\lasso\linear\split_seed_42\metrics.json
-lightgbm,linear,1.5385561657194196,0.9923508763313293,0.9318587313332829,8015,gpu,C:\Users\Jupyter\Desktop\found_training_project\revision_outputs\lightgbm\linear\split_seed_42\metrics.json
