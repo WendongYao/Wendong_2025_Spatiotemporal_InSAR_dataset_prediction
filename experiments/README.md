@@ -1,6 +1,6 @@
 # CAGEO Minimal Reproduction Bundle
 
-This directory contains only the source files needed to rerun the CAGEO training and validation pipeline described in `CAGEO_COMPLETE_EXPERIMENT_REPORT.md`.
+This directory contains only the source files needed to rerun the CAGEO training, validation, and experiment-analysis figure pipeline described in `CAGEO_COMPLETE_EXPERIMENT_REPORT.md`.
 
 Versioned contents:
 
@@ -17,6 +17,7 @@ Versioned contents:
   - `run_nontransformer_round3.py`
   - `preflight_revision.py`
   - `smoke_test_revision.py`
+  - `build_cageo_analysis_figures.py`
 - environment and setup:
   - `environment.yml`
   - `requirements-revision.txt`
@@ -38,5 +39,6 @@ Generated artifacts are intentionally not versioned. After you run the pipeline,
 - `outputs/`
 - `splits/`
 - `configs/config_*.json`
+- `cageo_submission_assets/`
 
 Use `REPRODUCTION_INSTRUCTIONS.md` for the exact command sequence.

@@ -83,3 +83,29 @@ Check these generated summaries after the runs complete:
 - `revision_outputs/nontransformer_round3_fast/round3_summary.csv`
 
 The report `CAGEO_COMPLETE_EXPERIMENT_REPORT.md` records the expected experiment line and the main reference metrics for these summaries.
+
+## 6. Regenerate the manuscript analysis figures
+
+After the experiment outputs exist locally, regenerate the experiment-analysis figures with:
+
+```powershell
+python .\build_cageo_analysis_figures.py
+```
+
+This creates local figure files under:
+
+- `cageo_submission_assets/figures/`
+
+Covered figures:
+
+- `fig03_main_benchmark_rmse`
+- `fig04_prediction_residual_maps`
+- `fig05_error_diagnostics`
+- `fig06_interpolation_sensitivity`
+- `fig07_runtime_rmse_tradeoff`
+- `fig08_persistence_similarity_or_shap`
+- `fig09_study_area_timeseries`
+- `figS01_resolution_scaling`
+- `figS02_split_leakage`
+
+This script intentionally does not recreate `fig01` or `fig02`.
