@@ -20,6 +20,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Check whether the standalone revision project is ready to run.")
     parser.add_argument("--strict-core", action="store_true", help="Exit with code 1 if any first-round core dependency is missing.")
     parser.add_argument("--strict-all", action="store_true", help="Exit with code 1 if any core or optional dependency is missing.")
+    parser.add_argument("--csv-path", type=str, default=None, help="Optional explicit path to a real or synthetic CSV for the data probe.")
+    parser.add_argument("--skip-csv-check", action="store_true", help="Skip CSV path resolution and report dependency status only.")
     args = parser.parse_args()
 
     core_modules = ["numpy", "pandas", "scipy", "sklearn", "matplotlib", "torch", "lightgbm"]
@@ -40,14 +42,26 @@ def main() -> None:
             else:
                 missing_optional.append(module_name)
 
-    config = RevisionConfig()
+    config = RevisionConfig(csv_path=args.csv_path)
+    resolved_csv_path = None
+    csv_ready = False
+    csv_error = None
+    if not args.skip_csv_check:
+        try:
+            resolved_csv_path = str(config.resolve_csv_path())
+            csv_ready = True
+        except Exception as exc:
+            csv_error = str(exc)
+
     payload = {
         "imports": imports,
         "core_ready": len(missing_core) == 0,
         "optional_ready": len(missing_optional) == 0,
         "missing_core": missing_core,
         "missing_optional": missing_optional,
-        "resolved_csv_path": str(config.resolve_csv_path()),
+        "csv_ready": csv_ready,
+        "resolved_csv_path": resolved_csv_path,
+        "csv_error": csv_error,
         "split_seed": config.split_seed,
         "grid_size": config.grid_size,
         "history_length": config.history_length,

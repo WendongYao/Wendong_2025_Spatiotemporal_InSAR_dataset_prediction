@@ -1,74 +1,129 @@
 # CAGEO Reproduction Instructions
 
-This repository tracks only the files required to rerun the CAGEO training and validation pipeline. Generated result folders are created locally and are not committed.
+This file describes the exact command flow for reproducing the main paper
+results and for running the bundled synthetic test case.
 
-## 1. Prepare the dataset
-
-Expected CSV filename:
-
-- `EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
-
-Recommended placement:
-
-- `experiments/datasets/EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
-
-You can also keep the CSV elsewhere and pass `--csv-path`.
-
-## 2. Create the environment
+## 1. Prepare the environment
 
 Recommended:
 
 ```powershell
 conda env create -f environment.yml
-conda activate py311
+conda activate found_training_project
 pip install -r requirements-revision.txt
+```
+
+Optional SHAP dependency:
+
+```powershell
 pip install -r requirements-revision-optional.txt
 ```
 
-`requirements-revision-optional.txt` is needed for optional SHAP-based interpretability outputs.
+If you want CUDA acceleration for the PyTorch-based models, install the
+appropriate PyTorch build for your system before long runs. The repository code
+also works on CPU, but CPU runtimes are longer.
 
-## 3. Run sanity checks
+## 2. Run an installation smoke test
+
+Dependency-only check:
 
 ```powershell
-python .\smoke_test_revision.py --strict-all
+python .\smoke_test_revision.py --skip-csv-check
+```
+
+If you already have a real or synthetic CSV available:
+
+```powershell
+python .\smoke_test_revision.py --csv-path C:\path\to\your.csv
+```
+
+## 3. Run the bundled synthetic test case
+
+The repository includes a versioned synthetic CSV and a small smoke runner. This
+is the recommended first execution when the real EGMS CSV is not available.
+
+```powershell
+python .\run_synthetic_smoke_case.py
+```
+
+This command writes outputs under:
+
+- `synthetic_smoke_outputs/`
+
+The synthetic test case is meant to validate installation and workflow behavior.
+It is not a substitute for the real manuscript benchmark.
+
+## 4. Place the real EGMS CSV
+
+Expected manuscript CSV filename:
+
+- `EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
+
+Supported placement options:
+
+- `experiments/EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
+- `experiments/datasets/EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
+- any external path passed through `--csv-path`
+
+See `datasets/README.md` for the data note.
+
+## 5. Run preflight checks on the real data
+
+```powershell
 python .\preflight_revision.py --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv
 ```
 
-## 4. Run the experiment stages
+This confirms:
 
-### 4.1 Additional CAGEO suite
+- input history length
+- target map size
+- valid-pixel counts
+- train/validation/test split sizes
+
+## 6. Reproduce the main paper experiment stages
+
+### 6.1 Additional CAGEO suite
 
 ```powershell
 python .\run_cg_additional_suite.py --phase all --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv
 ```
 
-This regenerates the additional-suite outputs described in the report, including the primary baseline benchmark, mask ablation, interpolation sensitivity, split comparison, resolution scaling, interpretability diagnostics, audit files, and the reproduction pack.
+This regenerates the additional-suite outputs described in the report, including:
 
-### 4.2 Deep-model repair
+- primary baseline benchmark
+- mask ablation
+- interpolation sensitivity
+- split comparison
+- resolution scaling
+- interpretability diagnostics
+- audit files
+- reproducibility-pack summaries
+
+### 6.2 Deep-model repair
 
 ```powershell
 python .\run_deep_model_repair.py --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv
 ```
 
-### 4.3 Round-2 deep architecture search
+### 6.3 Round-2 architecture search
 
 ```powershell
 python .\run_deep_model_round2.py --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv --models temporal_channel_cnn patch_unet_residual conv_lstm_residual temporal_linear_hybrid --output-root revision_outputs/deep_model_round2
 ```
 
-### 4.4 Round-3 non-Transformer hybrid exploration
+### 6.4 Round-3 non-Transformer exploration
 
 ```powershell
 python .\run_nontransformer_round3.py --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv --models cnn_lstm_hybrid cnn_tcn_hybrid --output-root revision_outputs/nontransformer_round3
 ```
 
-### 4.5 Optional fast rerun for the 1-layer hybrid CNN-LSTM
+### 6.5 Optional fast rerun for the 1-layer Hybrid CNN-LSTM
 
 ```powershell
 python .\run_nontransformer_round3.py --csv-path C:\path\to\EGMS_L3_E32N34_100km_U_2018_2022_1.csv --models cnn_lstm_hybrid --patch-batch-size 32 --learning-rate 6e-4 --output-root revision_outputs/nontransformer_round3_fast
 ```
 
-## 5. Validate the regenerated outputs
+## 7. Validate the regenerated outputs
 
 Check these generated summaries after the runs complete:
 
@@ -82,17 +137,19 @@ Check these generated summaries after the runs complete:
 - `revision_outputs/nontransformer_round3/round3_summary.csv`
 - `revision_outputs/nontransformer_round3_fast/round3_summary.csv`
 
-The report `CAGEO_COMPLETE_EXPERIMENT_REPORT.md` records the expected experiment line and the main reference metrics for these summaries.
+The expected experiment line and reference metrics are documented in:
 
-## 6. Regenerate the manuscript analysis figures
+- `CAGEO_COMPLETE_EXPERIMENT_REPORT.md`
 
-After the experiment outputs exist locally, regenerate the experiment-analysis figures with:
+## 8. Rebuild the manuscript analysis figures
+
+After the experiment outputs exist locally:
 
 ```powershell
 python .\build_cageo_analysis_figures.py
 ```
 
-This creates local figure files under:
+This creates:
 
 - `cageo_submission_assets/figures/`
 
@@ -108,4 +165,4 @@ Covered figures:
 - `figS01_resolution_scaling`
 - `figS02_split_leakage`
 
-This script intentionally does not recreate `fig01` or `fig02`.
+The script intentionally does not recreate `fig01` or `fig02`.

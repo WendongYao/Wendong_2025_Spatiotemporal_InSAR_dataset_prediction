@@ -8,6 +8,7 @@ experiments/outputs/
 experiments/splits/
 experiments/configs/config_*.json
 experiments/cageo_submission_assets/
+experiments/synthetic_smoke_outputs/
 
 # caches and environments
 __pycache__/
