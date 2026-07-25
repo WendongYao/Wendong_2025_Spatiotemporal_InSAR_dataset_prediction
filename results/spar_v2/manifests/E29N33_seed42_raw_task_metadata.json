@@ -1,0 +1,25 @@
+{
+  "block_side": 8,
+  "buffer_blocks": 0,
+  "grid_test_cells": 5120,
+  "grid_train_cells": 40960,
+  "grid_val_cells": 8192,
+  "idw_neighbors": 8,
+  "idw_power": 2.0,
+  "interpolation_seconds": 1.8326614000834525,
+  "load_seconds": 2.409760100301355,
+  "protocol": "raw-target-pregrid-holdout-v1",
+  "raw_buffer_points": 0,
+  "raw_test_points": 24840,
+  "raw_train_points": 101582,
+  "raw_val_points": 19076,
+  "source_fingerprint": {
+    "header_sha256": "e7ed1bbc058017a233c0fda5fdc5ee8aa59cef6bc5b97d509143cecbb8117933",
+    "mtime_ns": 1776076401294381500,
+    "path": "<LOCAL_WORKSPACE>/uk_ireland_ortho_extracted/EGMS_L3_E29N33_100km_U_2018_2022_1/EGMS_L3_E29N33_100km_U_2018_2022_1.csv",
+    "size_bytes": 209834854
+  },
+  "split_seed": 42,
+  "test_target_used_in_any_target_grid": false,
+  "tile": "E29N33"
+}

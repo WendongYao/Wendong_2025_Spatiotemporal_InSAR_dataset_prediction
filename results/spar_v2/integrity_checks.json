@@ -1,0 +1,102 @@
+{
+  "status": "pass_with_provenance_warning",
+  "method_name": "SPAR",
+  "legacy_machine_identifier": "saqr_point_query",
+  "verified_direct_prediction_artifacts": 14,
+  "expected_files_missing": [],
+  "historical_provenance_warning": "Run manifests record the clean public source commit but do not contain hashes of the evolving experiments_ext code at launch time. Metrics flags and artifacts identify the frozen variants, but exact historical extension-code provenance is incomplete.",
+  "source_code_hashes_at_local_audit": {
+    "experiments_ext\\support_aware_model.py": "0b671b5f6674563b37b0f0f541eb8149d892b684ba9e646ea93840c3be98ed92",
+    "experiments_ext\\raw_point_supervision.py": "7a3b7a47e7cd83a1c34d64dae3fbd3e7afc3271b3cd78e69b706294104674a73",
+    "experiments_ext\\run_raw_holdout_pilot.py": "a69311aeff4eda6fa6c16e1713f84649a1b1f1f406418e2f119ded600128eefa",
+    "experiments_ext\\synthetic_truth_data.py": "23a2139a44876c8246901bbd124fc7d4f6a7b76dfd192d601a41e1d7ab9e2f69",
+    "experiments_ext\\run_saqr_synthetic_truth.py": "1b8fb65b6dd43e266b458c97bd8fe6add0f6487e6e2a3f99413ab4e6c9bd67cd",
+    "experiments_ext\\analyze_saqr_results.py": "0c540aaf513641a6ae9e76d5aed644852d6e47316d47d4662ff148075c39e0e1"
+  },
+  "checks": [
+    {
+      "artifact": "predictions/E32N34_seed42.npz",
+      "point_count": 20236,
+      "direct_raw_rmse": 0.907241940498352,
+      "prediction_sha256": "3681992e78706544f170242972d2b2899832a441729ee8f45ae2d0fb6a5ff136"
+    },
+    {
+      "artifact": "predictions/E32N34_seed43.npz",
+      "point_count": 19860,
+      "direct_raw_rmse": 1.1013094186782837,
+      "prediction_sha256": "0df9845f6f6d8f8ceef8a296383c71936bfc129bbcf4061fd618ded3548c444a"
+    },
+    {
+      "artifact": "predictions/E32N34_seed44.npz",
+      "point_count": 19756,
+      "direct_raw_rmse": 1.319554090499878,
+      "prediction_sha256": "87e51a23b21fc9b0cab209903fbe8f578a74a939513a7c027bd5cffa50bb8031"
+    },
+    {
+      "artifact": "predictions/E32N34_seed45.npz",
+      "point_count": 18414,
+      "direct_raw_rmse": 1.3360460996627808,
+      "prediction_sha256": "8389ba8bac959c55883d41f6d5734fb81f6f89ba20a5ab3e68f303f7c23844fc"
+    },
+    {
+      "artifact": "predictions/E32N34_seed46.npz",
+      "point_count": 18577,
+      "direct_raw_rmse": 1.1703824996948242,
+      "prediction_sha256": "0f47ccd294814afc4856c475c606c4748556b9ebee7c23922925fc48f835b9e6"
+    },
+    {
+      "artifact": "predictions/E29N33_seed42.npz",
+      "point_count": 24840,
+      "direct_raw_rmse": 1.0597776174545288,
+      "prediction_sha256": "7c825157c39f3bd2b2cc0c922004930834a7adb5f3a35090874f616a1b8ab4fe"
+    },
+    {
+      "artifact": "predictions/E36N31_seed42.npz",
+      "point_count": 29786,
+      "direct_raw_rmse": 0.5759822130203247,
+      "prediction_sha256": "937dc01eddf08494a1211ec913c1afa1b85c0c89d3125f73f9d7c609b3be790c"
+    },
+    {
+      "artifact": "predictions/E37N41_seed42.npz",
+      "point_count": 3799,
+      "direct_raw_rmse": 1.5284391641616821,
+      "prediction_sha256": "5bd3441c282c30009c1b640830ee5cb9ef9fb8887e9eab7802f336c3c2556e53"
+    },
+    {
+      "artifact": "predictions/synthetic_composite_idw_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.20346494019031525,
+      "prediction_sha256": "335edb5cd2c9f2900edb32acbbfe298a6a26c4caed58b9f81b8ceac06d250d19"
+    },
+    {
+      "artifact": "predictions/synthetic_composite_linear_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.20346494019031525,
+      "prediction_sha256": "335edb5cd2c9f2900edb32acbbfe298a6a26c4caed58b9f81b8ceac06d250d19"
+    },
+    {
+      "artifact": "predictions/synthetic_composite_nearest_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.20346494019031525,
+      "prediction_sha256": "335edb5cd2c9f2900edb32acbbfe298a6a26c4caed58b9f81b8ceac06d250d19"
+    },
+    {
+      "artifact": "predictions/synthetic_localized_acceleration_idw_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.11282923817634583,
+      "prediction_sha256": "b7bb6e071afa3c856f362932b85ac31a6b0362d4be47f41918f3fea7e62ed58a"
+    },
+    {
+      "artifact": "predictions/synthetic_moving_front_idw_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.2082522213459015,
+      "prediction_sha256": "56b48500c2370560accefd82b8cfb98ce53c8954eda0c5ee08915dc0f906207d"
+    },
+    {
+      "artifact": "predictions/synthetic_seasonal_trend_idw_seed42.npz",
+      "point_count": 141,
+      "direct_raw_rmse": 0.060809411108493805,
+      "prediction_sha256": "3f1ff134b68cdbfc836978f797ce53e15fb52613353f27f5148ed036ee193c0d"
+    }
+  ]
+}

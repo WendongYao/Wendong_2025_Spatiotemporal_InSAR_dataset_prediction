@@ -1,0 +1,55 @@
+{
+  "multiseed": {
+    "seed_count": 5,
+    "lasso_direct_rmse_mean": 1.5074668169021606,
+    "lasso_direct_rmse_std": 0.21938500243725603,
+    "spar_direct_rmse_mean": 1.1669068098068238,
+    "spar_direct_rmse_std": 0.17581967621117908,
+    "paired_difference_mean_spar_minus_lasso": -0.3405600070953369,
+    "paired_difference_95ci_low": -0.4278981428828885,
+    "paired_difference_95ci_high": -0.2532218713077853,
+    "mean_relative_improvement_percent": 22.59224227911709,
+    "wins": 5,
+    "paired_t_statistic": -10.826269145771548,
+    "paired_t_pvalue_two_sided": 0.000412979920570979,
+    "wilcoxon_statistic": 0.0,
+    "wilcoxon_pvalue_one_sided": 0.03125,
+    "mean_cost_ratio": 3.0361203432882506,
+    "mean_equal_cell_improvement_percent": 23.126750144074972
+  },
+  "confirmatory_seeds_43_46": {
+    "seed_count": 4,
+    "lasso_direct_rmse_mean": 1.5805434584617615,
+    "lasso_direct_rmse_std": 0.1690317586973641,
+    "spar_direct_rmse_mean": 1.2318230271339417,
+    "spar_direct_rmse_std": 0.11455410472899305,
+    "paired_difference_mean_spar_minus_lasso": -0.3487204313278198,
+    "paired_difference_95ci_low": -0.47353692231497835,
+    "paired_difference_95ci_high": -0.22390394034066127,
+    "mean_relative_improvement_percent": 21.905370686714235,
+    "wins": 4,
+    "paired_t_statistic": -8.891325492963364,
+    "paired_t_pvalue_two_sided": 0.003000128514916817,
+    "wilcoxon_statistic": 0.0,
+    "wilcoxon_pvalue_one_sided": 0.0625
+  },
+  "external_region_wins": 3,
+  "external_region_count": 3,
+  "external_mean_relative_improvement_percent": 26.107144367923766,
+  "composite_direct_rmse_range_across_operators": [
+    0.20346494019031525,
+    0.20346494019031525
+  ],
+  "composite_dense_rmse_range_across_operators": [
+    0.17345020174980164,
+    0.5600330829620361
+  ],
+  "buffer1_stress": {
+    "raw_train_points": 5079,
+    "lasso_direct_rmse": 1.2787936925888062,
+    "spar_direct_rmse": 1.2757223844528198,
+    "relative_improvement_percent": 0.24017229313734986
+  },
+  "method_name": "SPAR",
+  "legacy_machine_identifier": "saqr_point_query"
+}

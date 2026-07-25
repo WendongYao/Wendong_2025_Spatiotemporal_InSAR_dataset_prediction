@@ -1,7 +1,7 @@
 # CAGEO Complete Experiment Report
 
 Date: 2026-05-16
-Project root: `C:\Users\Jupyter\Desktop\found_training_project`
+Project root: `<LOCAL_PROJECT_ROOT>`
 
 ## 1. Purpose
 
@@ -56,7 +56,7 @@ The project uses the EGMS CSV:
 
 - filename: `EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
 - resolved path during current runs:
-  `C:\Users\Jupyter\Desktop\pytorch-tcn-main\EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
+  `<EGMS_SOURCE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv`
 
 This path is resolved through `RevisionConfig.resolve_csv_path()`.
 
