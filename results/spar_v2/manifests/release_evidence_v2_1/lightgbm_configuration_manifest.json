@@ -1,0 +1,76 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "scope": "E32N34 direct raw LightGBM seeds 42--46",
+  "selection_rule": "choose the target formulation on seed-42 validation, then freeze it for seeds 43--46",
+  "seed42_candidate_validation_results": [
+    {
+      "target_formulation": "absolute",
+      "val_direct_raw_rmse": 1.9640141725540161,
+      "best_iteration": 165,
+      "training_seconds": 11.206080399919301
+    },
+    {
+      "target_formulation": "increment",
+      "val_direct_raw_rmse": 1.5444586277008057,
+      "best_iteration": 497,
+      "training_seconds": 17.81835799990222
+    }
+  ],
+  "records": [
+    {
+      "seed": 42,
+      "target_formulation": "increment",
+      "optimization_target": "future_increment",
+      "selection_policy": "seed42_validation_only",
+      "direct_raw_rmse": 1.1981093883514404,
+      "metrics_artifact": "results/R076_lightgbm_target_selection_E32N34_seed42/direct_raw_lightgbm/metrics.json",
+      "metrics_sha256": "46ab9252457fec1787d61eeec096e87b4bc4c226b31be8cac1184a5dda0b7ec7",
+      "run_manifest_artifact": "results/R076_lightgbm_target_selection_E32N34_seed42/run_manifest.json",
+      "run_manifest_sha256": "8d3bc2d516dff9d2a85b901832874ea152ece34c1096da605dd7088ab61feb80"
+    },
+    {
+      "seed": 43,
+      "target_formulation": "increment",
+      "optimization_target": "future_increment",
+      "selection_policy": "frozen_cli_choice",
+      "direct_raw_rmse": 1.3531627655029297,
+      "metrics_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_43/direct_raw_lightgbm/metrics.json",
+      "metrics_sha256": "3f755179e580ff908f5e5073ec9d36df2a3fd36e32c804e1cdcd63e3bfb5ad1a",
+      "run_manifest_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_43/run_manifest.json",
+      "run_manifest_sha256": "0ba825d630aced2f9a9b6977c264170908e138e457ed26c193bc2841eaef452a"
+    },
+    {
+      "seed": 44,
+      "target_formulation": "increment",
+      "optimization_target": "future_increment",
+      "selection_policy": "frozen_cli_choice",
+      "direct_raw_rmse": 1.6975653171539307,
+      "metrics_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_44/direct_raw_lightgbm/metrics.json",
+      "metrics_sha256": "9949b5ff23600064f637d21e8c3ef234c15df24e6b07f99c5cff8b467abc8621",
+      "run_manifest_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_44/run_manifest.json",
+      "run_manifest_sha256": "d13c98137f157e9aaa8486e5b8779e033ab9c395aed0bbd0238c9bf68179a143"
+    },
+    {
+      "seed": 45,
+      "target_formulation": "increment",
+      "optimization_target": "future_increment",
+      "selection_policy": "frozen_cli_choice",
+      "direct_raw_rmse": 1.7732596397399902,
+      "metrics_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_45/direct_raw_lightgbm/metrics.json",
+      "metrics_sha256": "324033ff7e5118627c523d619fd8e8843430230545bd58bdf0137996c55cc973",
+      "run_manifest_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_45/run_manifest.json",
+      "run_manifest_sha256": "a53fd9a8008d65d30dfc712a49863cb4ff0e28ad480d0228da74ab8e404bcdc6"
+    },
+    {
+      "seed": 46,
+      "target_formulation": "increment",
+      "optimization_target": "future_increment",
+      "selection_policy": "frozen_cli_choice",
+      "direct_raw_rmse": 1.583850622177124,
+      "metrics_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_46/direct_raw_lightgbm/metrics.json",
+      "metrics_sha256": "7cb04b3b1b8d54c56932a2adfb16231b3b47841a4ade8eecd9f3aa172c54f87f",
+      "run_manifest_artifact": "results/R079_lightgbm_E32N34_seeds43_46/E32N34/seed_46/run_manifest.json",
+      "run_manifest_sha256": "bfb56bc7dacaf3a24a9bf27191571fc541f55f7524f0adba6ea40c0a916f5c3d"
+    }
+  ]
+}

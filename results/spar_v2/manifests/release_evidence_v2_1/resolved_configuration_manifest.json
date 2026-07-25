@@ -1,0 +1,76 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "scope": "current public reproduction configuration for the frozen SPAR architecture",
+  "historical_provenance_qualification": "The numerical checkpoint and predictions are frozen and auditable, but the exact historical extension-source snapshot is unavailable; these settings are recorded from the current release implementation.",
+  "architecture": {
+    "history_steps": 300,
+    "temporal_widths": [
+      96,
+      24
+    ],
+    "decoder_width": 64,
+    "output_width": 1,
+    "temporal_encoder_sequence": [
+      "Linear(300,96)",
+      "GELU",
+      "LayerNorm(96)",
+      "Linear(96,24)",
+      "GELU"
+    ],
+    "query_decoder_sequence": [
+      "Linear(24,64)",
+      "GELU",
+      "LayerNorm(64)",
+      "Linear(64,1)"
+    ],
+    "spatial_context_enabled": false,
+    "local_coordinate_conditioning": false,
+    "global_coordinate_conditioning": false,
+    "trainable_parameters": 33210,
+    "frozen_anchor_coefficients": 301,
+    "correction_scale_initial": 0.1,
+    "residual_output_layer_initialization": "zero"
+  },
+  "optimization": {
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "loss": "masked Smooth-L1",
+    "maximum_epochs": 60,
+    "validation_patience": 12,
+    "patch_batch_size": 16
+  },
+  "training_query_sampling": {
+    "patch_size": 16,
+    "assignment": "nearest containing patch start",
+    "minimum_labels_per_retained_patch": 8,
+    "maximum_queries_per_retained_patch": 128,
+    "selection_is_target_blind": true,
+    "selection_seed_formula": "split_seed + 1009 * (split_code + 2)",
+    "temporal_lags_retained_per_selected_query": 300,
+    "inference_minimum_points_per_patch": 1,
+    "inference_maximum_points_per_patch": null,
+    "seed42_label_coverage": {
+      "training_available": 89865,
+      "training_used": 58103,
+      "training_percent": 64.65587269793579,
+      "validation_available": 18656,
+      "validation_used": 14128,
+      "validation_percent": 75.72898799313894,
+      "test_available": 20236,
+      "test_predicted_exactly_once": 20236
+    }
+  },
+  "metric_artifact": "results/R069_saqr_frozen_seed42/saqr_point_query/metrics.json",
+  "metric_sha256": "374855734cff1902bcdfd7988fc59ec9ea4d94d6460f0df044516a8c5ef8418a",
+  "raw_task_metadata_artifact": "results/R069_saqr_frozen_seed42/raw_task_metadata.json",
+  "raw_task_metadata_sha256": "2fd2e79e481f61281f223596b738bd40fab94b1f3c3483e5c3d600d612431158",
+  "checkpoint_artifact": "results/R069_saqr_frozen_seed42/saqr_point_query/best_model.pth",
+  "checkpoint_sha256": "20ee874e5c8d096708e9fdcd36b185c5891a0b7530cf6565794b822e342e6b8a",
+  "implementation_hashes": {
+    "experiments_ext/raw_point_supervision.py": "b6212335780756bc4bcb1b8d108e62196f3cf521e5f46dbc4345af464447659d",
+    "experiments_ext/support_aware_model.py": "912373e047aca08bbeceb2fad49d843877db4951b707ba21887adfb3a9b85820",
+    "experiments_ext/run_raw_holdout_pilot.py": "e72522d0d5a41108541cba7aded921e44640cec683dfbd0c8fb36d59181f3e1c",
+    "source/experiments/revision_config.py": "a6fc2eb8afb508b0887857a338435cf9764052c7af64cd83bb97db34a43a8a43"
+  }
+}

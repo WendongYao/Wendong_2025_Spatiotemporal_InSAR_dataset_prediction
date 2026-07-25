@@ -1,0 +1,25 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "figure": "fig06_prediction_maps",
+  "tile": "E32N34",
+  "split_seed": 42,
+  "display_only_test_points": 20236,
+  "quantile_rule": "pooled 1st/99th percentiles for values; pooled 99th percentile absolute signed error",
+  "displacement_limits_mm": [
+    -16.753435745239255,
+    4.757896747589113
+  ],
+  "signed_error_limits_mm": [
+    -4.192119539976121,
+    4.192119539976121
+  ],
+  "paper_rounded_displacement_limits_mm": [
+    -16.75,
+    4.76
+  ],
+  "paper_rounded_signed_error_limit_mm": 4.19,
+  "inputs": {
+    "results/R069_saqr_frozen_seed42/saqr_point_query/direct_raw_test_predictions.npz": "3681992e78706544f170242972d2b2899832a441729ee8f45ae2d0fb6a5ff136",
+    "results/R069_saqr_frozen_seed42/lasso_raw_supervised/direct_raw_test_predictions.npz": "73f544bbd7ece87a01d7e7a06d3b2b78dfa3722e3cbdb27025f5e8e47f6b985e"
+  }
+}

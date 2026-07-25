@@ -1,8 +1,4 @@
-"""Evaluate frozen SPAR on analytic truth at irregular measurement support.
-
-The filename retains the historical ``saqr`` development identifier so that
-archived run manifests remain directly traceable to the released code.
-"""
+"""Evaluate frozen SAQR-Net on analytic truth at irregular measurement support."""
 
 from __future__ import annotations
 
@@ -18,7 +14,9 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
+SOURCE_EXPERIMENTS = PROJECT_ROOT / "source" / "experiments"
+if not SOURCE_EXPERIMENTS.is_dir():
+    SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
 if str(SOURCE_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(SOURCE_EXPERIMENTS))
 

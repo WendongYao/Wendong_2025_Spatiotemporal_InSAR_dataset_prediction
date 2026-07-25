@@ -13,7 +13,9 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
+SOURCE_EXPERIMENTS = PROJECT_ROOT / "source" / "experiments"
+if not SOURCE_EXPERIMENTS.is_dir():
+    SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
 if str(SOURCE_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(SOURCE_EXPERIMENTS))
 

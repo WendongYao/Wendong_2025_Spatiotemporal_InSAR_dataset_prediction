@@ -1,53 +1,28 @@
-import argparse
-from pathlib import Path
-import sys
-
 import matplotlib.pyplot as plt
 import numpy as np
-import torch
 
-from paper_plot_style import save_figure
-
-
-ROOT = Path(__file__).resolve().parents[1]
-EXT = ROOT / "experiments_ext"
-SOURCE_EXPERIMENTS = ROOT / "experiments"
-sys.path.insert(0, str(EXT))
-sys.path.insert(0, str(SOURCE_EXPERIMENTS))
-
-from raw_holdout_data import RawHoldoutSpec, load_forecast_columns  # noqa: E402
+from paper_plot_style import locate_result, save_figure
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--csv-path", type=Path, required=True, help="Path to the E32N34 EGMS CSV from Zenodo.")
-parser.add_argument(
-    "--spar-predictions",
-    type=Path,
-    default=ROOT / "results" / "spar_v2" / "predictions" / "E32N34_seed42.npz",
+spar_path = locate_result(
+    "results/R069_saqr_frozen_seed42/saqr_point_query/direct_raw_test_predictions.npz",
+    "results/spar_v2/predictions/E32N34_seed42.npz",
 )
-parser.add_argument(
-    "--lasso-state",
-    type=Path,
-    default=ROOT / "results" / "spar_v2" / "checkpoints" / "E32N34_seed42_lasso_state.pth",
+lasso_path = locate_result(
+    "results/R069_saqr_frozen_seed42/lasso_raw_supervised/direct_raw_test_predictions.npz",
+    "results/spar_v2/lasso_backfill/E32N34_seed42_spatial_block/direct_raw_test_predictions.npz",
 )
-args = parser.parse_args()
-
-spar_path = args.spar_predictions
-lasso_path = args.lasso_state
-csv_path = args.csv_path
 
 spar = np.load(spar_path)
+lasso = np.load(lasso_path)
+for field in ("indices", "points", "truth"):
+    if not np.array_equal(spar[field], lasso[field]):
+        raise RuntimeError(f"SPAR/LASSO prediction artifacts disagree for {field}.")
 indices = spar["indices"].astype(np.int64)
 points = spar["points"].astype(np.float32)
 truth = spar["truth"].astype(np.float32)
 spar_pred = spar["prediction"].astype(np.float32)
-
-spec = RawHoldoutSpec(csv_path=csv_path, tile="E32N34", grid_size=256, split_seed=42, block_side=8, buffer_blocks=0)
-_, raw_history, _ = load_forecast_columns(spec)
-state = torch.load(lasso_path, map_location="cpu", weights_only=False)
-x = torch.tensor(raw_history[indices], dtype=torch.float32)
-x_norm = (x - state["X_mean"]) / state["X_std"]
-lasso_pred = ((x_norm @ state["weights"] + state["bias"]) * state["y_std"] + state["y_mean"]).numpy()
+lasso_pred = lasso["prediction"].astype(np.float32)
 
 rmse = float(np.sqrt(np.mean((lasso_pred - truth) ** 2)))
 if not np.isclose(rmse, 1.2151602506637573, atol=1e-5):

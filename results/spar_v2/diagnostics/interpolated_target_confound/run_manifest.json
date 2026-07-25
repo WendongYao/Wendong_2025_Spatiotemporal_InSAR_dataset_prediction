@@ -1,0 +1,67 @@
+{
+  "started_utc": "2026-07-25T17:42:51.718189+00:00",
+  "command": [
+    "<PYTHON_EXECUTABLE>",
+    "experiments_ext/run_interpolated_target_confound.py",
+    "--output-root",
+    "results/R085_interpolated_target_confound",
+    "--scenario",
+    "composite",
+    "--grid-size",
+    "64",
+    "--support-points",
+    "1024",
+    "--noise",
+    "0.35",
+    "--seed",
+    "42",
+    "--input-interpolation",
+    "idw",
+    "--target-interpolations",
+    "idw",
+    "linear",
+    "nearest",
+    "--models",
+    "lasso",
+    "cnn_lstm_hybrid",
+    "--epochs",
+    "40",
+    "--patience",
+    "8"
+  ],
+  "python": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_git_commit": "ffc1d4e8eb09c86ac81faa09ff662868b7494162",
+  "extension_code_sha256": {
+    "synthetic_truth_data.py": "23a2139a44876c8246901bbd124fc7d4f6a7b76dfd192d601a41e1d7ab9e2f69",
+    "raw_holdout_models.py": "0e846704028dea3daba7df903ef220e2fd4fc8cf0a381e42b9426fd742189555",
+    "run_interpolated_target_confound.py": "92effaf176ef03d94373f75b4806b6d252a5f84e8d175e507338ce1b94cdd328"
+  },
+  "spec": {
+    "scenario": "composite",
+    "grid_size": 64,
+    "history_length": 300,
+    "target_step": 301,
+    "support_points": 1024,
+    "observation_noise_std": 0.35,
+    "seed": 42,
+    "split_seed": 42,
+    "tile_size": 8,
+    "idw_neighbors": 8,
+    "idw_power": 2.0,
+    "input_interpolation": "idw"
+  },
+  "models": [
+    "lasso",
+    "cnn_lstm_hybrid"
+  ],
+  "target_interpolations": [
+    "idw",
+    "linear",
+    "nearest"
+  ],
+  "warning": "Diagnostic only: pseudo-target maps use all sparse future observations, including observations in held-out spatial regions.",
+  "completed_utc": "2026-07-25T17:45:29.115193+00:00",
+  "wall_seconds": 157.397205399815,
+  "summary_sha256": "96dcd7c34636d44a6ca1532baade555346894ffcc535b1d1e22d07f171087fd4"
+}

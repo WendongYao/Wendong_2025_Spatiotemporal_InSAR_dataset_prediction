@@ -1,6 +1,6 @@
 """CAGEO-only modern spatiotemporal baselines.
 
-These implementations are CAGEO-only dense raster baselines.
+These implementations are independent of the RSASE Transformer/STGCN line.
 They adapt video-prediction mechanisms to the paper's 300-to-1 patch-residual
 task and are labelled ``style`` to avoid implying an unchanged official model.
 """

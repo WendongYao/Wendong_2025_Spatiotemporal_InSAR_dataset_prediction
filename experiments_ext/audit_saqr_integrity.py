@@ -1,8 +1,4 @@
-"""Deterministic integrity checks for the frozen SPAR result package.
-
-The ``saqr`` path names are historical machine identifiers retained to verify
-the original artifacts without renaming them in place.
-"""
+"""Deterministic integrity checks for the frozen SAQR result package."""
 
 from __future__ import annotations
 

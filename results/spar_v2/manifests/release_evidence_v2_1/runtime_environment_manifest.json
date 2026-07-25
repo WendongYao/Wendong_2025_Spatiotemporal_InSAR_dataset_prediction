@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "scope": "retrospective manifest of the single local workstation used for the revision runs; this is not a launch-time attestation embedded in every historical run",
+  "machine_scope_identifier": "single-local-cageo-revision-workstation",
+  "operating_system": "Windows-11-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+  "python_version": "3.13.5",
+  "python_implementation": "CPython",
+  "pytorch_version": "2.11.0+cu128",
+  "cuda_runtime_version": "12.8",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA GeForce RTX 3090 Ti",
+  "gpu_driver_version": "591.86",
+  "gpu_memory_mib": 23028
+}

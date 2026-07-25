@@ -30,6 +30,12 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=60)
     parser.add_argument("--patience", type=int, default=12)
     parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--direct-batch-size", type=int, default=1024)
+    parser.add_argument(
+        "--lightgbm-target",
+        choices=["auto", "absolute", "increment"],
+        default="increment",
+    )
     parser.add_argument("--convlstm-num-layers", type=int, choices=[1, 2], default=1)
     parser.add_argument("--hybrid-no-warm-start", action="store_true")
     parser.add_argument("--hybrid-disable-recent-gate", action="store_true")
@@ -76,6 +82,10 @@ def main() -> None:
                 str(args.patience),
                 "--batch-size",
                 str(args.batch_size),
+                "--direct-batch-size",
+                str(args.direct_batch_size),
+                "--lightgbm-target",
+                args.lightgbm_target,
                 "--convlstm-num-layers",
                 str(args.convlstm_num_layers),
                 "--models",

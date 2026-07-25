@@ -13,7 +13,9 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
+SOURCE_EXPERIMENTS = PROJECT_ROOT / "source" / "experiments"
+if not SOURCE_EXPERIMENTS.is_dir():
+    SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
 if str(SOURCE_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(SOURCE_EXPERIMENTS))
 
@@ -72,7 +74,7 @@ def main() -> None:
     parser.add_argument(
         "--cache-dir",
         type=Path,
-        default=PROJECT_ROOT / "experiments" / "revision_outputs" / "_task_cache",
+        default=PROJECT_ROOT / "source" / "experiments" / "revision_outputs" / "_task_cache",
     )
     parser.add_argument("--output-root", type=Path, required=True)
     parser.add_argument("--seeds", nargs="+", type=int, default=[42, 43, 44, 45, 46])

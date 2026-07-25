@@ -1,0 +1,13 @@
+{
+  "lasso_dir": "<REPO_ROOT>/results/R081_external_seeds43_46/E29N33/seed_45/lasso_raw_supervised",
+  "source_manifest": "<REPO_ROOT>/results/R081_external_seeds43_46/E29N33/seed_45/run_manifest.json",
+  "tile": "E29N33",
+  "seed": 45,
+  "condition": "spatial_block",
+  "point_count": 20021,
+  "recorded_direct_raw_rmse": 1.6040209531784058,
+  "reconstructed_direct_raw_rmse": 1.6040209531784058,
+  "state_sha256": "ae54d88e8c909c05625550d09bb59988d7f85ff7a122556261b6e2a03a0d5921",
+  "metrics_sha256": "8b3c825e0188bbe6b972fc0525fbd362f0525dbbdf4f513d48c79b925bf22f64",
+  "prediction_sha256": "dfbff04ae7c41a7a11854f5b645b81245fb85a0328cddc04c4cc07456a819312"
+}

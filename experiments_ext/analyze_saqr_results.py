@@ -1,8 +1,4 @@
-"""Aggregate frozen SPAR evidence into auditable tables and statistics.
-
-Machine-readable ``saqr`` keys are retained for compatibility with archived
-development runs; public aggregate tables translate them to ``spar``.
-"""
+"""Aggregate frozen SAQR-Net evidence into auditable tables and statistics."""
 
 from __future__ import annotations
 
@@ -196,7 +192,7 @@ def main() -> None:
     write_csv(OUTPUT / "synthetic_truth.csv", synthetic_rows)
 
     deep_sources = {
-        "SPAR": RESULTS / "R069_saqr_frozen_seed42" / "saqr_point_query" / "metrics.json",
+        "Frozen SAQR-Net": RESULTS / "R069_saqr_frozen_seed42" / "saqr_point_query" / "metrics.json",
         "Direct raw LASSO": RESULTS / "R069_saqr_frozen_seed42" / "lasso_raw_supervised" / "metrics.json",
         "Raw-supervised Hybrid CNN-LSTM": RESULTS / "R011c_raw_supervised_E32N34_seed42" / "cnn_lstm_raw_supervised" / "metrics.json",
         "Raw-supervised ConvLSTM": RESULTS / "R043_convlstm_raw_supervised_E32N34_seed42" / "conv_lstm_raw_supervised" / "metrics.json",
@@ -250,11 +246,11 @@ def main() -> None:
     }
     (OUTPUT / "summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
 
-    report = f"""# SPAR Experiment Results
+    report = f"""# SAQR-Net Experiment Results
 
 ## Primary multi-seed result (E32N34)
 
-Frozen SPAR reduced direct raw-observation RMSE from {multiseed_stats['lasso_direct_rmse_mean']:.4f} +/- {multiseed_stats['lasso_direct_rmse_std']:.4f} mm to {multiseed_stats['saqr_direct_rmse_mean']:.4f} +/- {multiseed_stats['saqr_direct_rmse_std']:.4f} mm across five spatial splits. The mean paired reduction was {-multiseed_stats['paired_difference_mean_saqr_minus_lasso']:.4f} mm (95% CI {-multiseed_stats['paired_difference_95ci_high']:.4f} to {-multiseed_stats['paired_difference_95ci_low']:.4f}), corresponding to {multiseed_stats['mean_relative_improvement_percent']:.2f}% relative improvement and wins in {multiseed_stats['wins']}/5 seeds. The paired t-test gave p={multiseed_stats['paired_t_pvalue_two_sided']:.6f}; one-sided Wilcoxon p={multiseed_stats['wilcoxon_pvalue_one_sided']:.5f}. Mean core-time ratio was {multiseed_stats['mean_cost_ratio']:.2f}x LASSO. Seed 42 was used for model development; on the frozen confirmatory seeds 43--46, SPAR still won 4/4, improved RMSE by {confirmatory_stats['mean_relative_improvement_percent']:.2f}% on average, and gave paired t-test p={confirmatory_stats['paired_t_pvalue_two_sided']:.6f}. The exact one-sided Wilcoxon p-value is {confirmatory_stats['wilcoxon_pvalue_one_sided']:.4f}, whose minimum is limited by n=4.
+Frozen SAQR-Net reduced direct raw-observation RMSE from {multiseed_stats['lasso_direct_rmse_mean']:.4f} +/- {multiseed_stats['lasso_direct_rmse_std']:.4f} mm to {multiseed_stats['saqr_direct_rmse_mean']:.4f} +/- {multiseed_stats['saqr_direct_rmse_std']:.4f} mm across five spatial splits. The mean paired reduction was {-multiseed_stats['paired_difference_mean_saqr_minus_lasso']:.4f} mm (95% CI {-multiseed_stats['paired_difference_95ci_high']:.4f} to {-multiseed_stats['paired_difference_95ci_low']:.4f}), corresponding to {multiseed_stats['mean_relative_improvement_percent']:.2f}% relative improvement and wins in {multiseed_stats['wins']}/5 seeds. The paired t-test gave p={multiseed_stats['paired_t_pvalue_two_sided']:.6f}; one-sided Wilcoxon p={multiseed_stats['wilcoxon_pvalue_one_sided']:.5f}. Mean core-time ratio was {multiseed_stats['mean_cost_ratio']:.2f}x LASSO. Seed 42 was used for model development; on the frozen confirmatory seeds 43--46, SAQR-Net still won 4/4, improved RMSE by {confirmatory_stats['mean_relative_improvement_percent']:.2f}% on average, and gave paired t-test p={confirmatory_stats['paired_t_pvalue_two_sided']:.6f}. The exact one-sided Wilcoxon p-value is {confirmatory_stats['wilcoxon_pvalue_one_sided']:.4f}, whose minimum is limited by n=4.
 
 ## Mechanism isolation
 
@@ -265,13 +261,13 @@ Frozen SPAR reduced direct raw-observation RMSE from {multiseed_stats['lasso_dir
 
 ## External regions
 
-The frozen model beat direct raw LASSO in all three exploratory external regions: E29N33 by 24.32%, E36N31 by 52.83%, and sparse E37N41 by 1.17%. The sparse case supports a cautious density-dependent limitation rather than universal gains.
+The frozen model beat direct raw LASSO in all three non-RSASE regions: E29N33 by 24.32%, E36N31 by 52.83%, and sparse E37N41 by 1.17%. The sparse case supports a cautious density-dependent limitation rather than universal gains.
 
-An extreme one-block buffer leaves only {summary['buffer1_stress']['raw_train_points']} training points (about 6% of the unbuffered training set). Under this deliberately confounded stress, SPAR improves direct RMSE by only {summary['buffer1_stress']['relative_improvement_percent']:.2f}%. This does not isolate spatial leakage from training-data collapse and must be reported as a limitation, not as confirmatory evidence.
+An extreme one-block buffer leaves only {summary['buffer1_stress']['raw_train_points']} training points (about 6% of the unbuffered training set). Under this deliberately confounded stress, SAQR-Net improves direct RMSE by only {summary['buffer1_stress']['relative_improvement_percent']:.2f}%. This does not isolate spatial leakage from training-data collapse and must be reported as a limitation, not as confirmatory evidence.
 
 ## Analytic known truth and interpolation confounding
 
-For the nonlinear composite analytic field, direct raw RMSE was 0.2035 mm for SPAR versus 0.2709 mm for LASSO (24.89% lower). This direct result was identical under IDW, linear, and nearest input gridding, while SPAR dense analytic RMSE ranged from {summary['composite_dense_rmse_range_across_operators'][0]:.3f} to {summary['composite_dense_rmse_range_across_operators'][1]:.3f} mm. Thus measurement-support forecasting is operator-invariant, whereas dense reconstruction remains strongly interpolation-sensitive. SPAR did not beat LASSO on every simple analytic scenario, so claims must be limited to complex nonlinear dynamics rather than universal dominance.
+For the nonlinear composite analytic field, direct raw RMSE was 0.2035 mm for SAQR-Net versus 0.2709 mm for LASSO (24.89% lower). This direct result was identical under IDW, linear, and nearest input gridding, while SAQR dense analytic RMSE ranged from {summary['composite_dense_rmse_range_across_operators'][0]:.3f} to {summary['composite_dense_rmse_range_across_operators'][1]:.3f} mm. Thus measurement-support forecasting is operator-invariant, whereas dense reconstruction remains strongly interpolation-sensitive. SAQR-Net did not beat LASSO on every simple analytic scenario, so claims must be limited to complex nonlinear dynamics rather than universal dominance.
 
 ## Reviewer-facing conclusion
 

@@ -6,6 +6,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -14,7 +15,9 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
+SOURCE_EXPERIMENTS = PROJECT_ROOT / "source" / "experiments"
+if not SOURCE_EXPERIMENTS.is_dir():
+    SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
 if str(SOURCE_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(SOURCE_EXPERIMENTS))
 
@@ -29,6 +32,7 @@ from raw_holdout_data import (
 )
 from raw_holdout_models import run_lasso, run_patch_model, run_persistence, run_target_idw_diagnostic
 from raw_point_supervision import run_raw_point_supervised_model, run_raw_supervised_lasso
+from direct_raw_baselines import run_direct_raw_lightgbm, run_pointwise_gru
 
 
 SOURCE_COMMIT = "ffc1d4e8eb09c86ac81faa09ff662868b7494162"
@@ -40,6 +44,18 @@ def _sha256(path: Path) -> str:
         for block in iter(lambda: handle.read(1024 * 1024), b""):
             digest.update(block)
     return digest.hexdigest()
+
+
+def _current_source_commit() -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "rev-parse", "HEAD"],
+            cwd=PROJECT_ROOT / "source",
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except (OSError, subprocess.CalledProcessError):
+        return SOURCE_COMMIT
 
 
 def main() -> None:
@@ -57,12 +73,18 @@ def main() -> None:
     parser.add_argument("--epochs", type=int, default=60)
     parser.add_argument("--patience", type=int, default=12)
     parser.add_argument("--batch-size", type=int, default=16)
+    parser.add_argument("--direct-batch-size", type=int, default=1024)
+    parser.add_argument(
+        "--lightgbm-target",
+        choices=["auto", "absolute", "increment"],
+        default="increment",
+    )
     parser.add_argument("--convlstm-num-layers", type=int, choices=[1, 2], default=1)
     parser.add_argument("--hybrid-no-warm-start", action="store_true")
     parser.add_argument("--hybrid-disable-recent-gate", action="store_true")
     parser.add_argument("--hybrid-disable-spatial-correction", action="store_true")
     parser.add_argument("--resume", action="store_true")
-    parser.add_argument("--models", nargs="+", choices=["persistence", "target_idw_diagnostic", "lasso", "lasso_raw_supervised", "cnn_lstm_hybrid", "cnn_lstm_raw_supervised", "cnn_lstm_raw_quality_weighted", "conv_lstm_raw_supervised", "conv_lstm_raw_residual", "conv_lstm_absolute_supervised", "simvp_raw_supervised", "conv_lstm_residual", "simvp_style_residual", "saqr_point_query", "saqr_with_context", "saqr_with_global_coord", "saqr_grid_history", "saqr_no_anchor"], default=["persistence", "lasso", "cnn_lstm_hybrid"])
+    parser.add_argument("--models", nargs="+", choices=["persistence", "target_idw_diagnostic", "lasso", "lasso_raw_supervised", "direct_raw_lightgbm", "pointwise_gru", "cnn_lstm_hybrid", "cnn_lstm_raw_supervised", "cnn_lstm_raw_quality_weighted", "conv_lstm_raw_supervised", "conv_lstm_raw_residual", "conv_lstm_absolute_supervised", "simvp_raw_supervised", "conv_lstm_residual", "simvp_style_residual", "saqr_point_query", "saqr_with_context", "saqr_with_global_coord", "saqr_grid_history", "saqr_no_anchor"], default=["persistence", "lasso", "cnn_lstm_hybrid"])
     args = parser.parse_args()
 
     spec = RawHoldoutSpec(
@@ -79,12 +101,14 @@ def main() -> None:
         "started_utc": started_utc,
         "command": [sys.executable, *sys.argv],
         "python_executable": sys.executable,
-        "source_git_commit": SOURCE_COMMIT,
+        "source_git_commit": _current_source_commit(),
+        "clean_baseline_commit": SOURCE_COMMIT,
         "extension_code_sha256": {
             name: _sha256(PROJECT_ROOT / "experiments_ext" / name)
             for name in [
                 "support_aware_model.py",
                 "raw_point_supervision.py",
+                "direct_raw_baselines.py",
                 "run_raw_holdout_pilot.py",
             ]
         },
@@ -100,6 +124,8 @@ def main() -> None:
         "epochs": args.epochs,
         "patience": args.patience,
         "batch_size": args.batch_size,
+        "direct_batch_size": args.direct_batch_size,
+        "lightgbm_target": args.lightgbm_target,
         "convlstm_num_layers": args.convlstm_num_layers,
         "hybrid_no_warm_start": args.hybrid_no_warm_start,
         "hybrid_disable_recent_gate": args.hybrid_disable_recent_gate,
@@ -144,7 +170,15 @@ def main() -> None:
         if args.resume and metrics_path.exists():
             payload = json.loads(metrics_path.read_text(encoding="utf-8"))
             results.append(payload)
-            print(json.dumps({"resumed": model, "raw_test_rmse": payload["rmse"]}), flush=True)
+            print(
+                json.dumps(
+                    {
+                        "resumed": model,
+                        "raw_test_rmse": payload.get("direct_raw_rmse", payload["rmse"]),
+                    }
+                ),
+                flush=True,
+            )
             continue
         if model == "persistence":
             payload = run_persistence(raw_task, model_dir)
@@ -158,6 +192,31 @@ def main() -> None:
                 if not np.allclose(loaded_points, raw_task.raw_points) or not np.allclose(loaded_target, raw_task.raw_target):
                     raise AssertionError("Reloaded raw arrays differ from cached task.")
             payload = run_raw_supervised_lasso(raw_task, raw_history, config, model_dir)
+        elif model in {"direct_raw_lightgbm", "pointwise_gru"}:
+            if raw_history is None:
+                loaded_points, raw_history, loaded_target = load_forecast_columns(spec)
+                if not np.allclose(loaded_points, raw_task.raw_points):
+                    raise AssertionError("Reloaded raw point order differs from the cached task.")
+                if not np.allclose(loaded_target, raw_task.raw_target):
+                    raise AssertionError("Reloaded raw target differs from the cached task.")
+            if model == "direct_raw_lightgbm":
+                payload = run_direct_raw_lightgbm(
+                    raw_task,
+                    raw_history,
+                    model_dir,
+                    seed=args.seed,
+                    target_formulation=args.lightgbm_target,
+                )
+            else:
+                payload = run_pointwise_gru(
+                    raw_task,
+                    raw_history,
+                    model_dir,
+                    seed=args.seed,
+                    epochs=args.epochs,
+                    patience=args.patience,
+                    batch_size=args.direct_batch_size,
+                )
         elif model == "cnn_lstm_hybrid":
             payload = run_patch_model(
                 raw_task,
@@ -252,7 +311,15 @@ def main() -> None:
         else:
             raise AssertionError(model)
         results.append(payload)
-        print(json.dumps({"completed": model, "raw_test_rmse": payload["rmse"]}), flush=True)
+        print(
+            json.dumps(
+                {
+                    "completed": model,
+                    "raw_test_rmse": payload.get("direct_raw_rmse", payload["rmse"]),
+                }
+            ),
+            flush=True,
+        )
     with (args.output_root / "summary.json").open("w", encoding="utf-8") as handle:
         json.dump(results, handle, indent=2, allow_nan=True)
     run_manifest.update(

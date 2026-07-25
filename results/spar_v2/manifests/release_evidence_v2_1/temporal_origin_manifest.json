@@ -1,0 +1,64 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "protocol": "shared-300-history-to-one-target-origin",
+  "column_indices_zero_based": {
+    "history_start": 11,
+    "history_end": 310,
+    "skipped": 311,
+    "target": 312
+  },
+  "tiles": [
+    {
+      "tile": "E32N34",
+      "point_count": 128757,
+      "history_count": 300,
+      "history_start": "20180106",
+      "history_end": "20221205",
+      "skipped_acquisition": "20221211",
+      "target_date": "20221217",
+      "source_header_sha256": "e38d594b744528ec5c57f64c148390544eb3acb0dd8c7d106c8042ab641ef33c",
+      "source_size_bytes": 186241843,
+      "source_metadata": "results/R069_saqr_frozen_seed42/raw_task_metadata.json",
+      "source_metadata_sha256": "2fd2e79e481f61281f223596b738bd40fab94b1f3c3483e5c3d600d612431158"
+    },
+    {
+      "tile": "E29N33",
+      "point_count": 145498,
+      "history_count": 300,
+      "history_start": "20180106",
+      "history_end": "20221205",
+      "skipped_acquisition": "20221211",
+      "target_date": "20221217",
+      "source_header_sha256": "e7ed1bbc058017a233c0fda5fdc5ee8aa59cef6bc5b97d509143cecbb8117933",
+      "source_size_bytes": 209834854,
+      "source_metadata": "results/R070_saqr_multiregion_seed42/E29N33/raw_task_metadata.json",
+      "source_metadata_sha256": "d285ed9fb32c922c20ca1500ecb0ce07d68acdfc19557764ab71c2c6f469ef1b"
+    },
+    {
+      "tile": "E36N31",
+      "point_count": 201935,
+      "history_count": 300,
+      "history_start": "20180106",
+      "history_end": "20221205",
+      "skipped_acquisition": "20221211",
+      "target_date": "20221217",
+      "source_header_sha256": "3c4e9a6bd43f928b43d8c278f0d8bd39e17e5b840a21c6653994d3f02e9c25d0",
+      "source_size_bytes": 302102352,
+      "source_metadata": "results/R070_saqr_multiregion_seed42/E36N31/raw_task_metadata.json",
+      "source_metadata_sha256": "94a349ed6483f3264a45aeb1275f8b8452eef007026ba7b330a7da840078a578"
+    },
+    {
+      "tile": "E37N41",
+      "point_count": 23570,
+      "history_count": 300,
+      "history_start": "20180106",
+      "history_end": "20221205",
+      "skipped_acquisition": "20221211",
+      "target_date": "20221217",
+      "source_header_sha256": "b828c6eaf1ddd971ad3ef4eff8a7f2429ec85c62b40fe607da56add3a526db9e",
+      "source_size_bytes": 34352809,
+      "source_metadata": "results/R070_saqr_multiregion_seed42/E37N41/raw_task_metadata.json",
+      "source_metadata_sha256": "c7b4d8f4bc7707d42098617236727c47ff2ee5cfe6835468f641a8af9ed7c587"
+    }
+  ]
+}

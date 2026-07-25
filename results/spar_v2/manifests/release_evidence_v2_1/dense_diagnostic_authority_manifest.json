@@ -1,0 +1,91 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "scope": "seed-42 fixed-resolution diagnostic only",
+  "authoritative_aggregate": "results/R073_saqr_evidence/deep_baselines_seed42.csv",
+  "authoritative_aggregate_sha256": "9adf51159a739d172d14930ff3c9257bb9ba3ec11be28218e6b9f82bc08685ad",
+  "configuration_disambiguation": "Backbone labels recur in an earlier cell-level residual run. The paper reports only the later runs whose metrics explicitly state raw_observations_only supervision and record raw-label counts.",
+  "resolved_diagnostic_configuration": {
+    "grid_size": 256,
+    "patch_size": 16,
+    "patch_stride": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 1e-05,
+    "maximum_epochs": 60,
+    "validation_patience": 12,
+    "hybrid_depth": "single recurrent layer",
+    "convlstm_layers": 1,
+    "convlstm_hidden_channels": 64,
+    "simvp_hidden_channels": 32,
+    "simvp_temporal_bins": 16
+  },
+  "configuration_source_hashes": {
+    "experiments_ext/raw_point_supervision.py": "b6212335780756bc4bcb1b8d108e62196f3cf521e5f46dbc4345af464447659d",
+    "experiments_ext/modern_baselines.py": "07cc2a0ae931a7e4efa1ab59c74ed53efa86d571dcf7735587e4733a47fcb4fb",
+    "experiments_ext/run_raw_holdout_pilot.py": "e72522d0d5a41108541cba7aded921e44640cec683dfbd0c8fb36d59181f3e1c",
+    "source/experiments/revision_config.py": "a6fc2eb8afb508b0887857a338435cf9764052c7af64cd83bb97db34a43a8a43"
+  },
+  "models": [
+    {
+      "label": "Hybrid CNN-LSTM",
+      "paper_table_source": "results/R011c_raw_supervised_E32N34_seed42/cnn_lstm_raw_supervised/metrics.json",
+      "paper_table_source_sha256": "4776aa6fdbd1d724c8b67ce6a6d8589837d6e92aa68f052f9dae481e21173332",
+      "paper_table_values": {
+        "grid_sampled_raw_rmse": 2.9220664221742365,
+        "training_seconds": 328.88750030007213,
+        "inference_seconds": 5.482074699830264,
+        "core_seconds": 334.3695749999024,
+        "trainable_parameters": 424900,
+        "training_raw_labels": 76561,
+        "validation_raw_labels": 17378
+      },
+      "selection_reason": "raw-observation-supervised diagnostic matching the paper table protocol"
+    },
+    {
+      "label": "ConvLSTM",
+      "paper_table_source": "results/R043_convlstm_raw_supervised_E32N34_seed42/conv_lstm_raw_supervised/metrics.json",
+      "paper_table_source_sha256": "6920b201c1ebb2af6aa564fc01d2d42c2ae3b13e15d9715e2461b9eadaadec1c",
+      "paper_table_values": {
+        "grid_sampled_raw_rmse": 2.9206117561378013,
+        "training_seconds": 330.6871010004543,
+        "inference_seconds": 8.708260899875313,
+        "core_seconds": 339.3953619003296,
+        "trainable_parameters": 591873,
+        "training_raw_labels": 76561,
+        "validation_raw_labels": 17378
+      },
+      "selection_reason": "raw-observation-supervised diagnostic matching the paper table protocol",
+      "not_reported_earlier_run": "results/R043_dense_baselines_E32N34_seed42/conv_lstm_residual/metrics.json",
+      "not_reported_earlier_run_sha256": "64c200e17194c27f96c92bfbd9a81daa0492fc2645d864e9b01a6299f2272961",
+      "not_reported_earlier_values": {
+        "grid_sampled_raw_rmse": 2.930859628804717,
+        "core_seconds": 473.47224179981276,
+        "train_patches": 701,
+        "validation_patches": 184
+      }
+    },
+    {
+      "label": "SimVP-style",
+      "paper_table_source": "results/R043_simvp_raw_supervised_E32N34_seed42/simvp_raw_supervised/metrics.json",
+      "paper_table_source_sha256": "e9c5cc40747b38bc13c38bf05ba5e3e22af584ac47e26a8ced059458256e7360",
+      "paper_table_values": {
+        "grid_sampled_raw_rmse": 2.935480113231603,
+        "training_seconds": 11.948119000066072,
+        "inference_seconds": 0.9554926999844611,
+        "core_seconds": 12.903611700050533,
+        "trainable_parameters": 425665,
+        "training_raw_labels": 76561,
+        "validation_raw_labels": 17378
+      },
+      "selection_reason": "raw-observation-supervised diagnostic matching the paper table protocol",
+      "not_reported_earlier_run": "results/R043_dense_baselines_E32N34_seed42/simvp_style_residual/metrics.json",
+      "not_reported_earlier_run_sha256": "19e0aec69eb8cfffed9fe09e8733a0564baa7a8d1a76e68db97f21d9b28e3d74",
+      "not_reported_earlier_values": {
+        "grid_sampled_raw_rmse": 2.9330369850217317,
+        "core_seconds": 10.315569200087339,
+        "train_patches": 701,
+        "validation_patches": 184
+      }
+    }
+  ]
+}

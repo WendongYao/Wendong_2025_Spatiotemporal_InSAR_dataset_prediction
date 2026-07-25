@@ -1,0 +1,5 @@
+tile,role,status,absolute_path,boundary_note
+E32N34,original_cageo_primary,allowed,<PATH_TO_E32N34_CSV>,Primary rejected-paper tile
+E29N33,external_replication,allowed,<PATH_TO_E29N33_CSV>,Independently trained same-origin external tile
+E36N31,external_replication,allowed,<PATH_TO_E36N31_CSV>,Independently trained same-origin external tile
+E37N41,external_replication,allowed,<PATH_TO_E37N41_CSV>,Independently trained same-origin sparse external tile

@@ -1,8 +1,10 @@
-"""SPAR: lightweight support-preserving anchored residual model for CAGEO.
+"""Lightweight support-aware point-query increment model for CAGEO.
 
-The frozen model queries a prediction at each raw measurement (or optional
-dense location) from its complete 300-step history. A direct raw-LASSO anchor
-is a fixed baseline; the learned network predicts only a nonlinear correction.
+The model keeps the CAGEO patch context, but queries a prediction at each raw
+measurement (or arbitrary grid coordinate) using the point's direct 300-step
+history. A direct raw-LASSO forecast is transformed into standardized
+future-increment coordinates and used as a fixed anchor; the learned network
+only predicts a support-conditioned correction in those same coordinates.
 """
 
 from __future__ import annotations

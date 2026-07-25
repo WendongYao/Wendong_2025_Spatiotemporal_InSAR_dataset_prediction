@@ -47,7 +47,7 @@ box(ax, (0.78, 0.63), (0.19, 0.16), "Dense-grid error\n(operator-coupled)", "#FC
 arrow(ax, (0.20, 0.71), (0.27, 0.71))
 arrow(ax, (0.47, 0.71), (0.54, 0.71))
 arrow(ax, (0.71, 0.71), (0.78, 0.71))
-ax.text(0.37, 0.58, "point-specific histories may collapse within grid cells", color=COLORS["warning"], ha="center", fontsize=8)
+ax.text(0.37, 0.58, "raw histories become operator-dependent grid mixtures", color=COLORS["warning"], ha="center", fontsize=8)
 
 box(ax, (0.02, 0.12), (0.20, 0.16), "Raw 300-step history\nfor each measurement", "#EAF1F8", COLORS["baseline"])
 box(ax, (0.30, 0.12), (0.20, 0.16), "Anchored neural\nresidual forecaster", "#FFF1E6", COLORS["ours"], lw=1.5)

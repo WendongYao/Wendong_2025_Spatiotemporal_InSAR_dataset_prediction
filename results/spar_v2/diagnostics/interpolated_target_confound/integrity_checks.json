@@ -1,0 +1,84 @@
+{
+  "verdict": "PASS",
+  "generated_utc": "2026-07-25T18:29:18.826249+00:00",
+  "protocol": "analytic-interpolated-target-confound-v1",
+  "rows_verified": 6,
+  "checks": [
+    {
+      "model": "lasso",
+      "target_interpolation": "idw",
+      "analytic_test_rmse": 0.5669490577645122,
+      "pseudo_target_test_rmse": 0.29686460757108113,
+      "pseudo_target_distortion_rmse": 0.4366946145033058,
+      "optimism_gap_mm": 0.2700844501934311,
+      "prediction_sha256": "51b328e889f69ee7ad6f6dd5031dab78adec8b8961c96c31da3ad9f9366512e5",
+      "metrics_sha256": "0ff33333eb694b4acc6c4f4e8125d93823841eb2c69952b5c58ee28d6da2da36",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "6ed15413ab741810330968caf1f9c30407481cb1184db60e2e7df78d6c502a82"
+    },
+    {
+      "model": "cnn_lstm_hybrid",
+      "target_interpolation": "idw",
+      "analytic_test_rmse": 0.5231903094812712,
+      "pseudo_target_test_rmse": 0.1846397565709765,
+      "pseudo_target_distortion_rmse": 0.4366946145033058,
+      "optimism_gap_mm": 0.3385505529102947,
+      "prediction_sha256": "addaf5a4d9ca4520f15ec571874dbbdc9e80e5db686ead64836921b44be79d8f",
+      "metrics_sha256": "73e6bc1153db04a6ef8f6eb57e4c6a2b2c33d80a23023212bfa13fd25eef83b9",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "6ed15413ab741810330968caf1f9c30407481cb1184db60e2e7df78d6c502a82"
+    },
+    {
+      "model": "lasso",
+      "target_interpolation": "linear",
+      "analytic_test_rmse": 0.5506569967182373,
+      "pseudo_target_test_rmse": 0.48910143390800787,
+      "pseudo_target_distortion_rmse": 0.12748742946582378,
+      "optimism_gap_mm": 0.06155556281022945,
+      "prediction_sha256": "313895fd745c03261d7cedd332cc56361e2dfe0ddb97f06cdad556ccb7c82821",
+      "metrics_sha256": "d6c879f453904c59592490cff1c436a654fdfb3d59ff749fd4aac97d10d7f909",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "e8661a2552580b229ea95d27a120a0ac8626c0a609e94fde2e119a623309a7f2"
+    },
+    {
+      "model": "cnn_lstm_hybrid",
+      "target_interpolation": "linear",
+      "analytic_test_rmse": 0.5091707884844608,
+      "pseudo_target_test_rmse": 0.4414048974274441,
+      "pseudo_target_distortion_rmse": 0.12748742946582378,
+      "optimism_gap_mm": 0.06776589105701675,
+      "prediction_sha256": "50c648c0f9b64a23890e8a8926ca7e05e469623783884f4e2b4b82ec34e0f743",
+      "metrics_sha256": "110bbf5cdd0be663b1fc2388231b4af8c780950465e698d46a574558403120d9",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "e8661a2552580b229ea95d27a120a0ac8626c0a609e94fde2e119a623309a7f2"
+    },
+    {
+      "model": "lasso",
+      "target_interpolation": "nearest",
+      "analytic_test_rmse": 0.5586058038957137,
+      "pseudo_target_test_rmse": 0.43137683897560536,
+      "pseudo_target_distortion_rmse": 0.49244039500198744,
+      "optimism_gap_mm": 0.12722896492010832,
+      "prediction_sha256": "e3864c69bdb15f43a7e9a2f58c6585bf0d3fb6987ccb0779ccff7251354dc793",
+      "metrics_sha256": "e70586020d6b52a0fb09f1bb4ac9792cd1e38c20da69b973cff69c977e2f73d5",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "900cfab1af2583d0764ce4ac00498276ffa0f199ade9e45c8eb175232598bb03"
+    },
+    {
+      "model": "cnn_lstm_hybrid",
+      "target_interpolation": "nearest",
+      "analytic_test_rmse": 0.4608489311640407,
+      "pseudo_target_test_rmse": 0.3561348148811486,
+      "pseudo_target_distortion_rmse": 0.49244039500198744,
+      "optimism_gap_mm": 0.10471411628289207,
+      "prediction_sha256": "5ac3b138ded6774daee6d54ba71d5e10b0c71de4188915d7a6dd89f988cadeb7",
+      "metrics_sha256": "a51a23746426b5fc56d7de95a40e917207ca231136527f01e72d5c4997f276b6",
+      "analytic_target_sha256": "64457b46e4b6f1178961668840891871bad620221a4a2236b70767cec2bf71a4",
+      "pseudo_target_sha256": "900cfab1af2583d0764ce4ac00498276ffa0f199ade9e45c8eb175232598bb03"
+    }
+  ],
+  "summary_sha256": "96dcd7c34636d44a6ca1532baade555346894ffcc535b1d1e22d07f171087fd4",
+  "manifest_sha256": "02bfbb70c8d03515e98ec23dbe6d9bb1ca67bcd8abd33a0e22e4e6ee8064088b",
+  "audit_script_sha256": "e01a98258fea6b757bf60fde2042fce2467592fd170361ab15230c1c6780481b",
+  "scope_warning": "This verifies artifact consistency only. The experiment is deliberately non-deployable because held-out future support values enter the pseudo-target."
+}

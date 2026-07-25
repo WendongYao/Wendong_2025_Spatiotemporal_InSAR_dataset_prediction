@@ -1,0 +1,13 @@
+{
+  "lasso_dir": "<REPO_ROOT>/results/R082_controlled_buffer_E32N34_seed42/buffered/lasso_raw_supervised",
+  "source_manifest": "<REPO_ROOT>/results/R082_controlled_buffer_E32N34_seed42/run_manifest.json",
+  "tile": "E32N34",
+  "seed": 42,
+  "condition": "buffered",
+  "point_count": 19443,
+  "recorded_direct_raw_rmse": 1.1581103801727295,
+  "reconstructed_direct_raw_rmse": 1.15811026096344,
+  "state_sha256": "6ccbcbcf437b6a3946cb21ead9263fa494d40157d9a1518038d8be1ea24b46a0",
+  "metrics_sha256": "ac4067e18b69d55cf61ec9af087ee7eae225906f673ca7a28df00da2da3e184c",
+  "prediction_sha256": "c28c8e696793e0f91804d94ec2e5dc81cf31aa4413b314c7fe7c31aa6a9e788a"
+}

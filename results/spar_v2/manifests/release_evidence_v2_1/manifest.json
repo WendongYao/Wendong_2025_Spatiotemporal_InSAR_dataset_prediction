@@ -1,0 +1,33 @@
+{
+  "generated_utc": "2026-07-25T20:13:43.842695+00:00",
+  "files": {
+    "temporal_origin_manifest.json": {
+      "size_bytes": 2571,
+      "sha256": "007c9aef9df09faafc8f6cdddf47489e1b45abaef1f0882f2fa5bf1a3e226e9d"
+    },
+    "resolved_configuration_manifest.json": {
+      "size_bytes": 3220,
+      "sha256": "14172b19e406a30edcda3bff0300c91e7b6092fae4220f4bfec6fa1282762a46"
+    },
+    "dense_diagnostic_authority_manifest.json": {
+      "size_bytes": 4547,
+      "sha256": "1c84602025dcb6a078acc7b3c7024d7cfdc95e0f5e780644f89fa620620bc43c"
+    },
+    "fig06_plot_manifest.json": {
+      "size_bytes": 918,
+      "sha256": "a662f2070924e32cf1229c945c0236604f3b50ac6e341ccdc38f208afef60675"
+    },
+    "external_replication_manifest.json": {
+      "size_bytes": 21033,
+      "sha256": "2a2286fe333966f5ada9127e551293884a457977adab2f962f74cbab9527ac6d"
+    },
+    "lightgbm_configuration_manifest.json": {
+      "size_bytes": 3839,
+      "sha256": "6135361e99ed3ef5f691acaa125dbd3d20051fb32230e05ea6e8eccb1f2fce7e"
+    },
+    "runtime_environment_manifest.json": {
+      "size_bytes": 705,
+      "sha256": "c5301a895e2c8b00fe2145341b7cba2938f9c0a8fa7e54d85dcdb51a51278e58"
+    }
+  }
+}

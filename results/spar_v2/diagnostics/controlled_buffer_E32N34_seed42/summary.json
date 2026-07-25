@@ -1,0 +1,18 @@
+{
+  "buffered": {
+    "lasso_direct_raw_rmse": 1.1581103801727295,
+    "spar_direct_raw_rmse": 0.940065860748291,
+    "spar_reduction_percent": 18.827611180889136,
+    "train_target_count": 81466,
+    "train_to_test_min_m": 2000.0,
+    "train_to_val_min_m": 2000.0
+  },
+  "matched_unbuffered": {
+    "lasso_direct_raw_rmse": 1.1571810245513916,
+    "spar_direct_raw_rmse": 0.925158679485321,
+    "spar_reduction_percent": 20.050652416809157,
+    "train_target_count": 81466,
+    "train_to_test_min_m": 100.0,
+    "train_to_val_min_m": 100.0
+  }
+}

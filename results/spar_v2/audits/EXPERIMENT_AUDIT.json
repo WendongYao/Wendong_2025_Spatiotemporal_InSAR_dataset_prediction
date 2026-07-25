@@ -1,0 +1,59 @@
+{
+  "date": "2026-07-25",
+  "auditor": "independent-codex-reviewer-agent",
+  "overall_verdict": "warn",
+  "integrity_status": "warn",
+  "checks": {
+    "gt_provenance": {
+      "status": "pass",
+      "details": "Dataset forecast targets are used; validation/test future targets do not enter target grids."
+    },
+    "score_normalization": {
+      "status": "pass",
+      "details": "Metrics use raw residuals and truth statistics; no self-normalized prediction score was found."
+    },
+    "result_existence": {
+      "status": "warn",
+      "details": "R083 and R084 artifacts reconcile, but the historical frozen SPAR extension-code source snapshot is incomplete."
+    },
+    "dead_code": {
+      "status": "pass",
+      "details": "Audited inference, metric, persistence, and aggregation paths are executed."
+    },
+    "scope": {
+      "status": "warn",
+      "details": "Four real tiles and one forecast origin; the controlled buffer uses E32N34 seed 42 only."
+    },
+    "protocol": {
+      "status": "warn",
+      "details": "Validation labels influence model selection and early stopping but not gradient updates; the manuscript now states this."
+    },
+    "eval_type": [
+      "real_gt",
+      "simulation_only"
+    ]
+  },
+  "claims": [
+    {
+      "id": "C1",
+      "impact": "supported",
+      "summary": "SPAR wins all five E32N34 splits against LASSO, LightGBM, GRU, and no-anchor."
+    },
+    {
+      "id": "C2",
+      "impact": "supported_with_qualifier",
+      "summary": "Three-tile fixed-architecture replication is positive but heterogeneous and is not transfer or Europe-wide generalization."
+    },
+    {
+      "id": "C3",
+      "impact": "supported_with_qualifier",
+      "summary": "The 2-km matched-count buffer retains most of the gain in one E32N34 seed-42 controlled split."
+    },
+    {
+      "id": "C4",
+      "impact": "supported_with_qualifier",
+      "summary": "Analytic truth supports interpolation sensitivity but not universal gradient recovery."
+    }
+  ],
+  "trace_path": ".aris/traces/experiment-audit/2026-07-25_priority_audit/"
+}

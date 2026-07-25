@@ -18,7 +18,9 @@ import numpy as np
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
+SOURCE_EXPERIMENTS = PROJECT_ROOT / "source" / "experiments"
+if not SOURCE_EXPERIMENTS.is_dir():
+    SOURCE_EXPERIMENTS = PROJECT_ROOT / "experiments"
 if str(SOURCE_EXPERIMENTS) not in sys.path:
     sys.path.insert(0, str(SOURCE_EXPERIMENTS))
 
@@ -587,6 +589,22 @@ def run_raw_point_supervised_model(
         "target_supervision": "raw_observations_only",
         "interpolated_future_target_used_for_loss": False,
         "target_formulation": formulation,
+        "optimization_target": (
+            "standardized_future_increment"
+            if support_query and formulation == "normalized_residual"
+            else formulation
+        ),
+        "training_loss": (
+            "smooth_l1_on_standardized_future_increment" if support_query else "smooth_l1"
+        ),
+        "anchor_coordinate_system": (
+            "standardized_future_increment" if support_query and use_warm_start else None
+        ),
+        "physical_reconstruction": (
+            "last_history_value + train_increment_mean + train_increment_std * standardized_prediction"
+            if support_query
+            else None
+        ),
         "quality_weighted_raw_loss": bool(quality_weighted),
         "quality_weight_formula": "clip((1/max(rmse,p10_floor)^2)/train_mean,0.1,10)" if quality_weighted else None,
         **({} if direct_payload is None else direct_payload["metrics"]),
@@ -915,6 +933,14 @@ def run_raw_supervised_lasso(
     }
     torch.save(best_state, output_dir / "lasso_state.pth")
     np.save(output_dir / "prediction_grid.npy", grid_prediction.astype(np.float32))
+    np.savez_compressed(
+        output_dir / "direct_raw_test_predictions.npz",
+        indices=test.astype(np.int64),
+        points=raw_task.raw_points[test].astype(np.float64),
+        truth=raw_task.raw_target[test].astype(np.float32),
+        prediction=direct_prediction.astype(np.float32),
+        residual=(direct_prediction - raw_task.raw_target[test]).astype(np.float32),
+    )
     _write_rows(output_dir / "alpha_sweep.csv", alpha_rows)
     with (output_dir / "metrics.json").open("w", encoding="utf-8") as handle:
         json.dump(metrics, handle, indent=2, allow_nan=True)

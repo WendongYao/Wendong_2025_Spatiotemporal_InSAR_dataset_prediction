@@ -4,39 +4,30 @@ This repository hosts the reproducibility package for:
 
 `Support-Preserving Sparse-to-Dense InSAR Forecasting with Anchored Neural Residuals`
 
-Release `v2.0.0` adds SPAR, the measurement-support-first evaluation protocol,
-frozen/sanitized run manifests, compact prediction artifacts, known-truth tests,
-reviewer-requested ablations, and the final paper figure scripts. The original
-gridding-first CAGEO package remains under `experiments/` for traceability.
-
-## License
-
-This repository includes a clear open-source license:
-
-- `LICENSE`
+Release `v2.1.0` adds the reviewer-priority validation and provenance package:
+corrected repeated-holdout statistics, five-partition external-tile replications,
+a training-count-matched 2-km buffer control, LASSO prediction backfills, an
+interpolated-pseudo-target confound experiment, resolved configuration and plot
+manifests, and refreshed paper figures. The original gridding-first CAGEO package
+remains under `experiments/` for traceability.
 
 ## Repository layout
 
-- `experiments/`
-  Original CAGEO code, documentation, environment files, and synthetic smoke case
-- `experiments_ext/`
-  SPAR model, raw-observation protocol, baselines, ablations, and known-truth experiments
-- `results/spar_v2/`
-  Sanitized aggregates, manifests, prediction artifacts, checkpoints, and integrity hashes
-- `paper_figures/`
-  Publication figure scripts and rendered PDF figures
+- `experiments/`: original CAGEO code, environment, documentation, and smoke data.
+- `experiments_ext/`: support-preserving model, raw-observation evaluation,
+  baselines, controls, aggregation, and audit utilities.
+- `results/spar_v2/`: sanitized aggregates, manifests, predictions, checkpoints,
+  controlled diagnostics, and integrity hashes.
+- `paper_figures/`: publication figure scripts and rendered PDF/PNG figures.
+- `tests/`: boundary and protocol regression tests for the extension.
 
 ## Start here
 
-- `experiments/README.md`
 - `experiments/REPRODUCTION_INSTRUCTIONS.md`
-- `experiments/USER_GUIDE.md`
-- `experiments/TUTORIAL.md`
-- `experiments/COMPUTATIONAL_REQUIREMENTS.md`
-- `experiments/CAGEO_COMPLETE_EXPERIMENT_REPORT.md`
 - `experiments_ext/README.md`
 - `results/spar_v2/README.md`
-- `RELEASE_NOTES_v2.0.0.md`
+- `paper_figures/README.md`
+- `RELEASE_NOTES_v2.1.0.md`
 
 ## Quick start
 
@@ -49,7 +40,8 @@ python .\smoke_test_revision.py --skip-csv-check
 python .\run_synthetic_smoke_case.py
 ```
 
-To exercise the support-preserving extension without the EGMS CSV:
+From the repository root, the support-preserving analytic task can be exercised
+without an EGMS CSV:
 
 ```powershell
 python .\experiments_ext\run_saqr_synthetic_truth.py `
@@ -58,23 +50,24 @@ python .\experiments_ext\run_saqr_synthetic_truth.py `
   --grid-size 64 --support-points 1024 --seed 42
 ```
 
-The command retains the historical `saqr` filename and machine identifier used
-by the frozen manifests. In the paper and public documentation, the method is
-named **SPAR** (support-preserving anchored residual forecasting).
+The historical CLI names beginning with `saqr` are retained so archived
+artifacts remain verifiable. In the paper and documentation the method is named
+**SPAR**. The authoritative E32N34 seed-43--46 frozen variant is
+`saqr_no_global_coord`; seed 42 and the original external/analytic artifacts use
+`saqr_point_query`. The release manifests preserve these identities explicitly.
 
-The synthetic smoke case is included so that the software can be exercised even
-when the external EGMS source CSV is not bundled with the repository.
+## Data and scope
 
-## Data availability note
+The study uses the original E32N34 task and external tiles E29N33, E36N31, and
+E37N41 at one shared 300-history-to-one-target forecast origin. Each tile is
+trained independently; these are same-origin spatial replications, not transfer
+experiments. Transformer, STGCN, graph-model, and RSASE experiments are outside
+this release.
 
-The paper uses an external EGMS CSV that is not redistributed in this
-repository. The repository therefore includes:
-
-- the full code used for the paper workflow
-- documentation for where the real CSV should be placed
-- a versioned synthetic CSV and generator for test cases
-
-See `experiments/datasets/README.md` and `experiments/examples/README.md`.
-
-The versioned data archive is available through the Zenodo concept DOI
+The source EGMS products are not redistributed in the Git repository. The
+versioned archive is available through the Zenodo concept DOI
 [`10.5281/zenodo.20299645`](https://doi.org/10.5281/zenodo.20299645).
+
+## License
+
+See `LICENSE`.
