@@ -5,10 +5,12 @@ from paper_plot_style import locate_result, save_figure
 
 
 spar_path = locate_result(
+    "results/R090_provenance_confirmation/E32N34/seed_42/saqr_point_query/direct_raw_test_predictions.npz",
     "results/R069_saqr_frozen_seed42/saqr_point_query/direct_raw_test_predictions.npz",
     "results/spar_v2/predictions/E32N34_seed42.npz",
 )
 lasso_path = locate_result(
+    "results/R090_provenance_confirmation/E32N34/seed_42/lasso_raw_supervised/direct_raw_test_predictions.npz",
     "results/R069_saqr_frozen_seed42/lasso_raw_supervised/direct_raw_test_predictions.npz",
     "results/spar_v2/lasso_backfill/E32N34_seed42_spatial_block/direct_raw_test_predictions.npz",
 )
@@ -34,7 +36,7 @@ err_pool = np.concatenate([lasso_pred - truth, spar_pred - truth])
 elim = np.quantile(np.abs(err_pool), 0.99)
 
 fig, axes = plt.subplots(2, 3, figsize=(7.2, 4.5), constrained_layout=True)
-value_titles = ["Observed target", "Direct raw LASSO", "SPAR"]
+value_titles = ["Held-out L3 value", "Native-cell LASSO", "SPAR"]
 value_arrays = [truth, lasso_pred, spar_pred]
 value_scatter = None
 for ax, title, values in zip(axes[0], value_titles, value_arrays):

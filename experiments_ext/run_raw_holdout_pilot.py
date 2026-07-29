@@ -6,6 +6,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import platform
 import subprocess
 import sys
 import time
@@ -58,7 +59,22 @@ def _current_source_commit() -> str:
         return SOURCE_COMMIT
 
 
+def _source_worktree_status() -> list[str]:
+    try:
+        output = subprocess.check_output(
+            ["git", "status", "--porcelain"],
+            cwd=PROJECT_ROOT / "source",
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+        return [line for line in output.splitlines() if line]
+    except (OSError, subprocess.CalledProcessError):
+        return ["unavailable"]
+
+
 def main() -> None:
+    import torch
+
     run_started = time.perf_counter()
     started_utc = datetime.now(timezone.utc).isoformat()
     parser = argparse.ArgumentParser()
@@ -103,13 +119,35 @@ def main() -> None:
         "python_executable": sys.executable,
         "source_git_commit": _current_source_commit(),
         "clean_baseline_commit": SOURCE_COMMIT,
-        "extension_code_sha256": {
+        "python_version": platform.python_version(),
+        "numpy_version": np.__version__,
+        "torch_version": torch.__version__,
+        "cuda_version": torch.version.cuda,
+        "cuda_available": torch.cuda.is_available(),
+        "device_name": (
+            torch.cuda.get_device_name(0) if torch.cuda.is_available() else "cpu"
+        ),
+        "source_worktree_status_at_launch": _source_worktree_status(),
+        "input_sha256_at_launch": _sha256(args.csv_path),
+        "extension_code_sha256_at_launch": {
             name: _sha256(PROJECT_ROOT / "experiments_ext" / name)
             for name in [
                 "support_aware_model.py",
                 "raw_point_supervision.py",
+                "raw_holdout_data.py",
+                "hybrid_ablation.py",
+                "modern_baselines.py",
                 "direct_raw_baselines.py",
                 "run_raw_holdout_pilot.py",
+            ]
+        },
+        "source_code_sha256_at_launch": {
+            name: _sha256(SOURCE_EXPERIMENTS / name)
+            for name in [
+                "revision_config.py",
+                "revision_utils.py",
+                "revision_experiments.py",
+                "deep_patch_models.py",
             ]
         },
         "tile": args.tile,
@@ -328,6 +366,11 @@ def main() -> None:
             "wall_seconds": float(time.perf_counter() - run_started),
             "result_files": [str((args.output_root / model / "metrics.json").resolve()) for model in args.models],
             "summary_file": str((args.output_root / "summary.json").resolve()),
+            "output_sha256": {
+                str(path.relative_to(args.output_root)).replace("\\", "/"): _sha256(path)
+                for path in sorted(args.output_root.rglob("*"))
+                if path.is_file() and path.name != "run_manifest.json"
+            },
         }
     )
     with (args.output_root / "run_manifest.json").open("w", encoding="utf-8") as handle:

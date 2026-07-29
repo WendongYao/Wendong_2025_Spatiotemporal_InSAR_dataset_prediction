@@ -1,0 +1,80 @@
+{
+  "started_utc": "2026-07-29T19:36:56.851155+00:00",
+  "command": [
+    "<PYTHON_EXECUTABLE>",
+    "experiments_ext/run_v22_native_baselines.py",
+    "--csv-path",
+    "../EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "--tile",
+    "E32N34",
+    "--output-root",
+    "results/R088_native_baselines_seed42",
+    "--cache-dir",
+    "results/_raw_task_cache",
+    "--seed",
+    "42",
+    "--models",
+    "persistence",
+    "linear_trend",
+    "dlinear",
+    "--epochs",
+    "60",
+    "--patience",
+    "12",
+    "--batch-size",
+    "4096",
+    "--moving-average",
+    "25",
+    "--resume"
+  ],
+  "python_executable": "<PYTHON_EXECUTABLE>",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "2.4.0",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "device": "NVIDIA GeForce RTX 3090 Ti",
+  "source_git_commit": "ea860d527ae19fbde51cdb791547d82ca8556593",
+  "code_sha256_at_launch": {
+    "experiments_ext/native_support_baselines.py": "d9ddb087f6a018ca43fb92de2633c9c5961d62066d5b3ef8b3158ecd540d05f7",
+    "experiments_ext/run_v22_native_baselines.py": "67fb8b24a83139ac9f3e6e2de5b9ae3276db06c77d326f3211aad11fa1e151c4",
+    "experiments_ext/raw_holdout_data.py": "e3462fbfffd45d9ad8a70497eccbc2425575c1220594cfddac5401e43c088807",
+    "experiments_ext/raw_point_supervision.py": "b6212335780756bc4bcb1b8d108e62196f3cf521e5f46dbc4345af464447659d"
+  },
+  "input": {
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843,
+    "sha256": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589"
+  },
+  "tile": "E32N34",
+  "seed": 42,
+  "models": [
+    "persistence",
+    "linear_trend",
+    "dlinear"
+  ],
+  "output_root": "<REPO_ROOT>/results/R088_native_baselines_seed42",
+  "cache_dir": "<REPO_ROOT>/results/_raw_task_cache",
+  "epochs": 60,
+  "patience": 12,
+  "batch_size": 4096,
+  "moving_average": 25,
+  "completed_utc": "2026-07-29T19:37:40.005252+00:00",
+  "wall_seconds": 43.168419800000265,
+  "result_files": [
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/persistence/metrics.json",
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/linear_trend/metrics.json",
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/dlinear/metrics.json"
+  ],
+  "output_sha256": {
+    "dlinear/best_model.pth": "a4d00bf8ad638f731921f63cfe3f4a14c6858a95807b2f80b80c59cce90ff633",
+    "dlinear/direct_native_test_predictions.npz": "ba08c8e6efec1790809dc038c895fa17c8eb2b03d812579962e1ee6df911c321",
+    "dlinear/metrics.json": "d637338f724107a63f281aaed3dc2ad942866c5a263a62277f29f1225ed1b39b",
+    "dlinear/training_history.csv": "3482deb14c7352708acca160074720843aba7c0774fe59b9b244868c3c10f521",
+    "linear_trend/direct_native_test_predictions.npz": "44f3424bee5c955360d6d62745c5dd98b740505debaf06d186b71007a35a97c7",
+    "linear_trend/metrics.json": "67fc426544f48d076948c09fd283e3ad04f44abcfd0654ba66cdd7ea028d57e3",
+    "persistence/direct_native_test_predictions.npz": "fe14dfd779ae54e7370ddf706e73a57311dab57ea74b0f289983e2a39a535e15",
+    "persistence/metrics.json": "4e1a156ee240c4b71a8fd693f2789dd3f0f94d85baec1c1c6d444544600bc805",
+    "summary.json": "83913d46db05c9410a91e33d8a2244f2cb77cd060dc093eb4632fb0f53581797"
+  }
+}

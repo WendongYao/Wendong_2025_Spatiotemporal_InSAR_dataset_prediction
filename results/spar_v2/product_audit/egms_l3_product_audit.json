@@ -1,0 +1,62 @@
+{
+  "generated_utc": "2026-07-29T19:36:27.352112+00:00",
+  "tile": "E32N34",
+  "source": {
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843,
+    "sha256": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589"
+  },
+  "product_interpretation": "EGMS Level-3 Ortho valid product cells on a partially populated native 100-m grid; rows are not raw persistent scatterers.",
+  "rows": 128757,
+  "unique_coordinate_pairs": 128757,
+  "duplicate_coordinate_pairs": 0,
+  "native_grid": {
+    "easting_unique_count": 680,
+    "northing_unique_count": 1000,
+    "represented_axis_counts": [
+      680,
+      1000
+    ],
+    "full_100m_extent_shape": [
+      692,
+      1000
+    ],
+    "possible_extent_cells": 692000,
+    "valid_cell_occupancy_percent": 18.60650289017341,
+    "easting_min": 3200050,
+    "easting_max": 3269150,
+    "northing_min": 3400050,
+    "northing_max": 3499950,
+    "easting_spacing_gcd_m": 100,
+    "northing_spacing_gcd_m": 100,
+    "easting_mod_100_values": [
+      50
+    ],
+    "northing_mod_100_values": [
+      50
+    ]
+  },
+  "temporal_task": {
+    "date_column_count": 302,
+    "date_start": "20180106",
+    "date_end": "20221217",
+    "history_count": 300,
+    "history_start": "20180106",
+    "history_end": "20221205",
+    "skipped_dates": [
+      "20221211"
+    ],
+    "target_date": "20221217",
+    "forecast_horizon_days": 12
+  },
+  "csv_rmse_field": {
+    "semantic_note": "Product quality attribute used only for stratification; it is not an independent ground-truth displacement error and is not equated with the official product-level displacement STD.",
+    "min": 0.20000000298023224,
+    "q25": 0.6000000238418579,
+    "median": 1.100000023841858,
+    "mean": 1.327918482577922,
+    "q75": 1.899999976158142,
+    "max": 5.099999904632568
+  },
+  "script_sha256": "0b1b386a366dd2c97e579f393213eb51aa69334229eb933d3572123674aacf50"
+}

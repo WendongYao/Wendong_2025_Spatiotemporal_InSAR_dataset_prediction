@@ -1,0 +1,80 @@
+{
+  "started_utc": "2026-07-29T19:40:57.511765+00:00",
+  "command": [
+    "<PYTHON_EXECUTABLE>",
+    "<REPO_ROOT>/experiments_ext/run_v22_native_baselines.py",
+    "--csv-path",
+    "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "--tile",
+    "E32N34",
+    "--output-root",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43",
+    "--cache-dir",
+    "<REPO_ROOT>/results/_raw_task_cache",
+    "--seed",
+    "43",
+    "--models",
+    "persistence",
+    "linear_trend",
+    "dlinear",
+    "--epochs",
+    "60",
+    "--patience",
+    "12",
+    "--batch-size",
+    "4096",
+    "--moving-average",
+    "25",
+    "--resume"
+  ],
+  "python_executable": "<PYTHON_EXECUTABLE>",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "2.4.0",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "device": "NVIDIA GeForce RTX 3090 Ti",
+  "source_git_commit": "ea860d527ae19fbde51cdb791547d82ca8556593",
+  "code_sha256_at_launch": {
+    "experiments_ext/native_support_baselines.py": "d9ddb087f6a018ca43fb92de2633c9c5961d62066d5b3ef8b3158ecd540d05f7",
+    "experiments_ext/run_v22_native_baselines.py": "67fb8b24a83139ac9f3e6e2de5b9ae3276db06c77d326f3211aad11fa1e151c4",
+    "experiments_ext/raw_holdout_data.py": "e3462fbfffd45d9ad8a70497eccbc2425575c1220594cfddac5401e43c088807",
+    "experiments_ext/raw_point_supervision.py": "b6212335780756bc4bcb1b8d108e62196f3cf521e5f46dbc4345af464447659d"
+  },
+  "input": {
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843,
+    "sha256": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589"
+  },
+  "tile": "E32N34",
+  "seed": 43,
+  "models": [
+    "persistence",
+    "linear_trend",
+    "dlinear"
+  ],
+  "output_root": "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43",
+  "cache_dir": "<REPO_ROOT>/results/_raw_task_cache",
+  "epochs": 60,
+  "patience": 12,
+  "batch_size": 4096,
+  "moving_average": 25,
+  "completed_utc": "2026-07-29T19:41:45.315866+00:00",
+  "wall_seconds": 47.821863199998916,
+  "result_files": [
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/persistence/metrics.json",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/linear_trend/metrics.json",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/dlinear/metrics.json"
+  ],
+  "output_sha256": {
+    "dlinear/best_model.pth": "a17ad23e3d312ee998c56221ee4037a241ae2d05e94b11dd0e56ace326149cec",
+    "dlinear/direct_native_test_predictions.npz": "b844d6a477092ed3794b0ffbd20c76212c5e7445358da8e154e8dfba5018c080",
+    "dlinear/metrics.json": "a2e25c136d05560e131006fcb0f885f8503b2d2ae6ca9c5b1e7c57d873ded784",
+    "dlinear/training_history.csv": "cf396bfb44514f214d7936f823e444ab962219415f82e1edc6fc64af0c978b09",
+    "linear_trend/direct_native_test_predictions.npz": "719d3a197b3dc9493cf6a474134f3bb8f82e022ab3d82a496f80fd53a30458a6",
+    "linear_trend/metrics.json": "1a4479669fcac878cf3f0e3548380e71f266e4823854d171344d90221b039ffc",
+    "persistence/direct_native_test_predictions.npz": "aa2383ab45fc3257c778b2dd8fe553df694aa94dd5d7a07979e02ac594d60d7c",
+    "persistence/metrics.json": "4ef855da558eaa10ec7f327b5372fd1032c964ddb795db8b45279ab8425ad3fa",
+    "summary.json": "14d2a6fe5ea35b930617c0d93827aca331792053f1f4bc733ae05b6e0800fe90"
+  }
+}

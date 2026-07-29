@@ -49,6 +49,8 @@ def locate_repository_root() -> Path:
     """Locate either the development workspace or the standalone public repository."""
 
     for parent in Path(__file__).resolve().parents:
+        if (parent / "results" / "R093_v22_aggregates").is_dir():
+            return parent
         if (parent / "results" / "R083_priority_aggregates").is_dir():
             return parent
         if (parent / "results" / "spar_v2").is_dir():

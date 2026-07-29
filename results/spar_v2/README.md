@@ -1,58 +1,51 @@
-# SPAR v2.1 result package
+# SPAR v2.2 result package
 
-This directory contains compact, sanitized evidence for the support-preserving
+This directory contains compact, sanitized evidence for the native-support
 CAGEO rebuild. Source EGMS CSVs, caches, unrelated projects, and ephemeral queue
 files are excluded.
 
-## Contents
+## Native-support additions
 
-- `aggregates/`: original v2 aggregates plus `priority_v2_1/` corrected
-  repeated-holdout statistics and five-seed external replications.
-- `predictions/`: verified SPAR direct-prediction artifacts.
-- `lasso_backfill/`: 18 frozen-state, no-refit LASSO prediction artifacts.
-- `replications/external_seeds43_46/`: sanitized raw run evidence for the 12
-  additional external-tile partitions.
-- `checkpoints/`: frozen real-data SPAR checkpoints and LASSO state.
-- `manifests/`: sanitized run metadata plus `release_evidence_v2_1/` for the
-  shared forecast origin, resolved configuration, dense-run identity, and map scales.
-- `diagnostics/controlled_buffer_E32N34_seed42/`: matched-count buffer evidence.
-- `diagnostics/interpolated_target_confound/`: analytic pseudo-target control and audit.
-- `diagnostics/dense_raw_label_seed42/`: authoritative raw-label-supervised
-  Hybrid, ConvLSTM, and SimVP-style diagnostic artifacts plus the disambiguated
-  earlier cell-level metric files.
-- `audits/`: experiment-integrity and paper-claim audit artifacts.
-- `release_manifest.json`: SHA256 and byte size for every released result file.
+- `product_audit/`: exact E32N34 EGMS L3 product geometry, temporal support,
+  valid-cell count, and product `rmse` distribution.
+- `native_baselines/`: persistence, dated ordinary-least-squares trend, and
+  DLinear results for the development split and four frozen confirmation splits.
+- `provenance_complete_reruns/`: LASSO and SPAR reruns with launch-time source,
+  input, configuration, output, and environment hashes.
+- `multiresolution_support/`: native-support and 512, 256, and 128 raster
+  evaluation artifacts for all five frozen splits.
+- `product_quality_strata/`: paired LASSO--SPAR errors by within-split quartile
+  of the EGMS L3 product `rmse` attribute.
+- `aggregates/native_support_v2_2/`: paper-facing tables, paired statistics,
+  confirmation-only analyses, and result-to-claim summary.
 
-## Endpoint convention
+The v2.0 and v2.1 subdirectories remain present so that the development history
+and reviewer-priority controls stay auditable.
 
-`direct_raw_rmse` is the primary endpoint: one future prediction per original
-measurement history. `grid_sampled_raw_rmse` bilinearly samples a dense field at
-measurement coordinates and is a secondary fixed-resolution diagnostic.
-`nearest_cell_point_rmse` is the separate nearest-cell endpoint to which the
-within-cell MSE decomposition applies. These endpoints are not interchangeable.
+## Primary endpoint
+
+The primary endpoint is one forecast at every held-out valid 100-m EGMS L3
+product cell. It evaluates product-level predictive consistency and is not
+presented as validation against independent geodetic truth. Dense raster maps
+are conditional query-support reconstructions and are secondary diagnostics.
 
 ## Statistical convention
 
-Seeds 42--46 are overlapping repeated spatial holdouts of the same tile and
-forecast origin, not independent geophysical cases. The package reports win
-counts and a Nadeau--Bengio corrected resampled statistic using the recorded
-test/train ratio. These quantities diagnose split sensitivity; they do not
-constitute population inference across independent regions or dates.
+Seed 42 is the development split. Seeds 43--46 are frozen confirmation splits.
+All five splits share one tile and forecast origin, so they are not independent
+geophysical replicates. We report split-wise wins, paired differences, an
+exact one-sided Wilcoxon statistic, and a Nadeau--Bengio corrected resampled
+statistic. The confirmation-only result is distinguished from the inclusive
+five-split descriptive result.
 
-## Training-query coverage
+## Scope and provenance
 
-SPAR preserves the full 300-lag history of each selected query but does not use
-every spatial training or validation label. The frozen query builder excludes
-patches with fewer than eight assigned labels and caps retained patches at 128
-target-blind selected queries. On E32N34 seed 42 this gives 58,103/89,865
-training labels and 14,128/18,656 validation labels. Direct inference removes
-both restrictions and predicts all 20,236 held-out points exactly once. The
-resolved configuration manifest records this distinction explicitly.
+The package covers the E32N34 EGMS L3 product only. The 302 dated displacement
+columns support a fixed 300-observation history, one skipped acquisition, and
+one 12-day target; this does not provide three comparable rolling origins
+without changing the task definition. Transformer, STGCN, graph-model, and
+RSASE experiments are outside this release.
 
-## Provenance qualification
-
-Predictions, model states, metrics, backfills, aggregate inputs, and release
-hashes are auditable. Some original frozen SPAR manifests predate complete
-launch-time hashing of every evolving extension source file. Exact historical
-extension-source reconstruction is therefore incomplete and is disclosed in
-`integrity_checks.json` and the release evidence manifests.
+The v2.2 LASSO/SPAR confirmation reruns record complete launch-time provenance.
+Earlier frozen artifacts are retained for traceability and preserve their
+previously disclosed extension-source provenance qualification.

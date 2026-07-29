@@ -1,0 +1,40 @@
+{
+  "generated_utc": "2026-07-29T19:49:50.969032+00:00",
+  "quality_field": "CSV column rmse",
+  "quality_semantics": "EGMS product attribute used for post-hoc stratification only; not an independent truth error and not the official 8-mm STD.",
+  "binning": "within-partition test-set quartiles",
+  "consumed_sha256": {
+    "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589",
+    "<REPO_ROOT>/experiments_ext/run_v22_quality_stratification.py": "2918d92c7ee20956b9fc9cbbc54145b1c087807b852dfe40e6b17b0036bfe05e",
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/persistence/direct_native_test_predictions.npz": "fe14dfd779ae54e7370ddf706e73a57311dab57ea74b0f289983e2a39a535e15",
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/linear_trend/direct_native_test_predictions.npz": "44f3424bee5c955360d6d62745c5dd98b740505debaf06d186b71007a35a97c7",
+    "<REPO_ROOT>/results/R088_native_baselines_seed42/dlinear/direct_native_test_predictions.npz": "ba08c8e6efec1790809dc038c895fa17c8eb2b03d812579962e1ee6df911c321",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_42/lasso_raw_supervised/direct_raw_test_predictions.npz": "f6cc42ecb8da2bc1b033c8a37980ea9e85c676fcd63bb321e15fc6781a73d8c1",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_42/saqr_point_query/direct_raw_test_predictions.npz": "3681992e78706544f170242972d2b2899832a441729ee8f45ae2d0fb6a5ff136",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/persistence/direct_native_test_predictions.npz": "aa2383ab45fc3257c778b2dd8fe553df694aa94dd5d7a07979e02ac594d60d7c",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/linear_trend/direct_native_test_predictions.npz": "719d3a197b3dc9493cf6a474134f3bb8f82e022ab3d82a496f80fd53a30458a6",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_43/dlinear/direct_native_test_predictions.npz": "b844d6a477092ed3794b0ffbd20c76212c5e7445358da8e154e8dfba5018c080",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_43/lasso_raw_supervised/direct_raw_test_predictions.npz": "ce59a6eb4c24b8d0c62bb3902e4831e54afc852921a80e7330025dbe495a1c02",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_43/saqr_point_query/direct_raw_test_predictions.npz": "0df9845f6f6d8f8ceef8a296383c71936bfc129bbcf4061fd618ded3548c444a",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_44/persistence/direct_native_test_predictions.npz": "bec51fa195ad93a664b0d4c9f96f26f871b10e2f08f7b6dfa00c67203cd73b7c",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_44/linear_trend/direct_native_test_predictions.npz": "b1dc49684d6850e4daf3f2ed6b340c6a2ec3ed6f3e39fd38640a79dd2f1a4d84",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_44/dlinear/direct_native_test_predictions.npz": "dfb641132c042dc24467f901f05d372815141db1dfd0d137d9ffdcb8c0d73623",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_44/lasso_raw_supervised/direct_raw_test_predictions.npz": "9a436f102086f56c7945bc97b6d8ae20738346f5b46a57a106f2b1e2bdb850ca",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_44/saqr_point_query/direct_raw_test_predictions.npz": "87e51a23b21fc9b0cab209903fbe8f578a74a939513a7c027bd5cffa50bb8031",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_45/persistence/direct_native_test_predictions.npz": "8afea3bd2b6a9d7f839ffe74a91c65e9728121a76405f36da3ec1726c9a1ebad",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_45/linear_trend/direct_native_test_predictions.npz": "51259af18c751ba27254910e3d9e1f572bf204aa007bd491b8bda12752f76bbe",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_45/dlinear/direct_native_test_predictions.npz": "cd52b68539ced9b913c391aaaf029df893998cb6be6c20101882270caa2459ba",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_45/lasso_raw_supervised/direct_raw_test_predictions.npz": "817cb31c650b2c4608a73c4d708bac2bdc731894599f2b98b46d4cabd44d40bb",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_45/saqr_point_query/direct_raw_test_predictions.npz": "8389ba8bac959c55883d41f6d5734fb81f6f89ba20a5ab3e68f303f7c23844fc",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_46/persistence/direct_native_test_predictions.npz": "4f7baa9c4c16254a44e5a0d8c9c0f2a6f92ae0c7730402d30e0e628b7820bdb7",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_46/linear_trend/direct_native_test_predictions.npz": "7738588e11fb8151d1a4bd6d9b845cb918f8063cdd66b3d092be75182e66974a",
+    "<REPO_ROOT>/results/R089_native_baselines_confirmation/E32N34/seed_46/dlinear/direct_native_test_predictions.npz": "aa1dd0906f4aaf3c26c7d8446215dc72312770bade60fe35190b5d95d1839371",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_46/lasso_raw_supervised/direct_raw_test_predictions.npz": "7c92b72f11e425a4a1506f5e520a764bd4800d9803ba2f3c3cad7362743e515b",
+    "<REPO_ROOT>/results/R090_provenance_confirmation/E32N34/seed_46/saqr_point_query/direct_raw_test_predictions.npz": "0f47ccd294814afc4856c475c606c4748556b9ebee7c23922925fc48f835b9e6"
+  },
+  "output_sha256": {
+    "quality_stratified_metrics.csv": "fc2b913e197a0427f46db6de04a97582a8c314197797eab3c57f4b82d8a316f7",
+    "quality_stratified_metrics.json": "99514346da7265c05725ed756878204e256957ad7818d33be88fdbe5d7d63a77",
+    "quality_stratified_summary.csv": "45690ef24e042c6d12e156ececc6acf8d33b58cdf663b296a374f2eb0758d746"
+  }
+}

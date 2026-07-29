@@ -48,7 +48,7 @@ ax.scatter(
 )
 ax.set_xticks([0, 1], ["No anchor", "Anchored SPAR"])
 ax.set_xlim(-0.35, 1.35)
-ax.set_ylabel("Direct raw RMSE (mm)")
+ax.set_ylabel("Native-cell RMSE (mm)")
 ax.text(0.02, 0.97, "(a)", transform=ax.transAxes, ha="left", va="top", weight="bold")
 ax.text(0.98, 0.05, "6.34% lower; 5/5 wins", transform=ax.transAxes, ha="right", color=COLORS["ours"])
 

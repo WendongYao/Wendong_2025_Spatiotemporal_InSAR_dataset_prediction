@@ -5,8 +5,9 @@ support-preserving anchored residual forecaster (SPAR).
 
 ## Core protocol
 
-The primary endpoint predicts the future displacement directly at each original
-measurement support. Spatial blocks are assigned before any target gridding,
+The primary endpoint predicts the future displacement directly at each held-out
+valid cell of the native 100-m EGMS L3 Ortho product. Spatial blocks are
+assigned before any target gridding,
 and test future targets never enter an interpolation surface or fitting step.
 Validation labels may be used for early stopping and model selection. Seed 42
 is the disclosed development partition because its test scores informed the
@@ -26,10 +27,16 @@ predicted.
 ## Main files
 
 - `support_aware_model.py`: `300 -> 96 -> 24 -> 64 -> 1` anchored residual model.
-- `raw_holdout_data.py`: label-independent spatial partitions and measurement-level metrics.
+- `raw_holdout_data.py`: label-independent spatial partitions and native-cell metrics.
 - `raw_point_supervision.py`: direct LASSO and SPAR training/prediction paths.
-- `direct_raw_baselines.py`: direct raw LightGBM and GRU baselines.
+- `direct_raw_baselines.py`: direct LightGBM and GRU baselines.
+- `native_support_baselines.py`: persistence, dated trend, and DLinear baselines.
 - `run_raw_holdout_pilot.py`: one-tile/one-partition experiment runner.
+- `run_v22_native_baselines.py`: native-support baseline runner.
+- `audit_egms_l3_product.py`: exact EGMS L3 product and date audit.
+- `run_v22_multires_support.py`: native-to-raster change-of-support evaluation.
+- `run_v22_quality_stratification.py`: product-`rmse` quartile analysis.
+- `aggregate_v22_results.py`: v2.2 paper-facing tables and paired statistics.
 - `run_multiregion_suite.py`: independently trained multi-tile/multi-seed runner.
 - `run_controlled_buffer_suite.py`: matched-count 100-m versus 2-km target buffer.
 - `synthetic_truth_data.py` and `run_saqr_synthetic_truth.py`: analytic known-truth tasks.
