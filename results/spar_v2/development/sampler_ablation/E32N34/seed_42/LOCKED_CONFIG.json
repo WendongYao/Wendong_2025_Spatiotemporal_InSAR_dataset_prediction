@@ -1,0 +1,105 @@
+{
+  "lock_version": "cageo-v23-r095",
+  "locked_utc": "2026-07-29T23:08:30.280785+00:00",
+  "decision_was_made_before_r095": true,
+  "development_partition": 42,
+  "locked_confirmation_partitions": [
+    47,
+    48,
+    49,
+    50
+  ],
+  "selected_spar_sampler": "all_cells_uniform",
+  "selection_rule": "choose all_cells_uniform if RMSE <= 1.01*best; otherwise choose all_cells_density_balanced if RMSE <= 1.01*best; otherwise retain legacy_capped_selection",
+  "selection_reason": "uniform all-cells RMSE is within 1% of the development-best sampler",
+  "development_sampler_results": [
+    {
+      "sampler": "legacy_capped_selection",
+      "native_cell_rmse": 0.8330887484899713,
+      "native_cell_mae": 0.5406156727539003,
+      "native_cell_bias": -0.017071795403511128,
+      "train_available_cell_count": 89865,
+      "train_used_cell_count": 58103,
+      "train_cell_coverage": 0.6465587269793579,
+      "best_epoch": 59,
+      "training_seconds": 43.97407789999852,
+      "inference_seconds": 0.001533200000267243,
+      "parameter_count": 33210,
+      "metrics_sha256": "5383e18f097fd0d01f3f9a0b735f71a67ed4aaa0b005af35db79ffd8eb2b4321"
+    },
+    {
+      "sampler": "all_cells_uniform",
+      "native_cell_rmse": 0.7399935220362437,
+      "native_cell_mae": 0.49477721179553286,
+      "native_cell_bias": -0.025921471445116338,
+      "train_available_cell_count": 89865,
+      "train_used_cell_count": 89865,
+      "train_cell_coverage": 1.0,
+      "best_epoch": 55,
+      "training_seconds": 77.6253015000002,
+      "inference_seconds": 0.0016268999970634468,
+      "parameter_count": 33210,
+      "metrics_sha256": "113f9a1d636969fa5f728a06c842ce1973600d137a65dcf82b0d1710b7ab317f"
+    },
+    {
+      "sampler": "all_cells_density_balanced",
+      "native_cell_rmse": 0.7891800911122893,
+      "native_cell_mae": 0.5187942525476842,
+      "native_cell_bias": -0.007060554281707737,
+      "train_available_cell_count": 89865,
+      "train_used_cell_count": 89865,
+      "train_cell_coverage": 1.0,
+      "best_epoch": 58,
+      "training_seconds": 75.4745692999968,
+      "inference_seconds": 0.0012487999993027188,
+      "parameter_count": 33210,
+      "metrics_sha256": "a95d738cd15d4a4cef6cc18177c00abd011d6689c205f4ae70a221a3d71d3b83"
+    }
+  ],
+  "spar": {
+    "architecture": "history_length->96->24->64->1",
+    "anchor": "fixed native-support LASSO",
+    "correction_head_initialization": "zero",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "loss": "Smooth-L1 on standardized future increment",
+    "maximum_epochs": 60,
+    "patience": 12,
+    "batch_size": 1024
+  },
+  "tcn": {
+    "architecture": "four causal residual blocks",
+    "channels": 32,
+    "kernel_size": 3,
+    "dilations": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "dropout": 0.1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "loss": "MSE on standardized absolute target",
+    "maximum_epochs": 60,
+    "patience": 12,
+    "batch_size": 1024,
+    "development_native_cell_rmse": 1.1645486744841567,
+    "development_metrics_sha256": "86fa2c080cae63b7b59afd3e6e9558ac50a7837fd18dc84cb782adbe3023f62e"
+  },
+  "primary_task": {
+    "tile": "E32N34",
+    "history_start_col": 11,
+    "history_length": 300,
+    "target_col": 312,
+    "grid_size_for_legacy_assignment_only": 256,
+    "block_side": 8
+  },
+  "code_sha256": {
+    "experiments_ext/native_pointwise_v23.py": "136762371c3286e6177f97badb81a32bac3715c0d53e87f585cd568291c34b35",
+    "experiments_ext/run_v23_native_suite.py": "ceec95f80186a24ad0c132d84f07ef3e856e6f49859372abfc3eeb791700c940"
+  },
+  "frozen_plan_sha256": "dcce147fc6780b54370c53f5de39b22fe0195a5f6a3e6dd8a23b51ae6fd6e0bc"
+}

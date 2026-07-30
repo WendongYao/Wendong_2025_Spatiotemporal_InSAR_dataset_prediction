@@ -1,7 +1,7 @@
 # SPAR extension
 
 This directory contains the public implementation and validation code for the
-support-preserving anchored residual forecaster (SPAR).
+support-preserving residual forecaster (SPAR).
 
 ## Core protocol
 
@@ -9,20 +9,15 @@ The primary endpoint predicts the future displacement directly at each held-out
 valid cell of the native 100-m EGMS L3 Ortho product. Spatial blocks are
 assigned before any target gridding,
 and test future targets never enter an interpolation surface or fitting step.
-Validation labels may be used for early stopping and model selection. Seed 42
-is the disclosed development partition because its test scores informed the
-frozen architecture; seeds 43--46 are the confirmation partitions. A `256 x
-256` dense map is a secondary product obtained by interpolating the 300 input
-histories and applying the frozen point forecaster.
+Validation labels may be used for early stopping and model selection.
+Partition 42 is disclosed development; partitions 47--50 are the pre-specified
+held-out evaluation. A dense map is an optional query obtained by interpolating
+the input histories and applying the fitted point forecaster.
 
-The frozen SPAR implementation assigns training and validation queries to
-`16 x 16` patches, excludes patches with fewer than eight assigned labels, and
-caps each retained patch at 128 target-blind selected queries. All 300 temporal
-lags are retained for every selected query. Direct inference uses a minimum of
-one point and no cap, so every held-out measurement receives one prediction.
-The seed-42 metrics record 58,103/89,865 training labels and 14,128/18,656
-validation labels in the optimization batches, with 20,236/20,236 test points
-predicted.
+The final SPAR implementation uses every available training cell exactly once
+per epoch with uniform objective weight and uses all validation cells for
+stopping. Each query retains all 300 temporal lags. Patch-density exclusions
+and caps are retained only in the archived development implementation.
 
 ## Main files
 
@@ -37,6 +32,11 @@ predicted.
 - `run_v22_multires_support.py`: native-to-raster change-of-support evaluation.
 - `run_v22_quality_stratification.py`: product-`rmse` quartile analysis.
 - `aggregate_v22_results.py`: v2.2 paper-facing tables and paired statistics.
+- `native_pointwise_v23.py`: final all-cell SPAR, DLinear, and causal TCN paths.
+- `run_v23_native_suite.py`: final native-support experiment runner.
+- `run_v23_no_anchor.py`: otherwise identical final zero-anchor ablation.
+- `aggregate_v23_results.py`: sampler, primary, temporal, and analytic tables.
+- `aggregate_v23_external.py`: regional and anchor final aggregates.
 - `run_multiregion_suite.py`: independently trained multi-tile/multi-seed runner.
 - `run_controlled_buffer_suite.py`: matched-count 100-m versus 2-km target buffer.
 - `synthetic_truth_data.py` and `run_saqr_synthetic_truth.py`: analytic known-truth tasks.
@@ -85,13 +85,13 @@ support values. It is not a deployable forecast protocol; it quantifies how a
 matched input/target interpolation operator can make pseudo-target RMSE
 optimistic relative to independent analytic truth.
 
-## Historical identifiers
+## Final v2.3 identity and historical identifiers
 
-Archived machine identifiers are retained. The seed-42, original external, and
-analytic artifacts use `saqr_point_query`; the authoritative E32N34 seed-43--46
-confirmation artifacts use `saqr_no_global_coord`. Both implement the paper's
-SPAR family, and the latter is the frozen no-coordinate architecture reported in
-the five-partition aggregate.
+The final implementation is `direct_spar_all_cells_uniform`. Archived machine
+identifiers are retained: older seed-42/external/analytic artifacts use
+`saqr_point_query`, and v2.2 confirmation artifacts use
+`saqr_no_global_coord`. They remain traceable but are not pooled with the final
+v2.3 primary evaluation.
 
 Use `experiments/environment.yml` or
 `experiments/requirements-revision.txt`. GPU execution is recommended for neural

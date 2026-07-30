@@ -1,0 +1,2 @@
+model,input_interpolation,target_interpolation,operator_match,analytic_test_rmse,pseudo_target_test_rmse,pseudo_target_distortion_rmse,optimism_gap_mm,training_seconds,inference_seconds,best_epoch,parameter_count
+cnn_lstm_hybrid,idw,idw,True,0.29813632369041443,0.21463842689990997,0.20353494584560394,0.08349789679050446,98.96778389999963,0.9242081999982474,32,424900

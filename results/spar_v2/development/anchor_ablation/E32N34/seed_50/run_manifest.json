@@ -1,0 +1,60 @@
+{
+  "started_utc": "2026-07-30T00:45:56.312255+00:00",
+  "command": [
+    "<PYTHON_EXECUTABLE>",
+    "<REPO_ROOT>/experiments_ext/run_v23_no_anchor.py",
+    "--csv-path",
+    "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "--output-root",
+    "<REPO_ROOT>/results/R101_v23_anchor_ablation/E32N34/seed_50",
+    "--cache-dir",
+    "<REPO_ROOT>/results/_raw_task_cache",
+    "--seed",
+    "50",
+    "--epochs",
+    "60",
+    "--patience",
+    "12",
+    "--batch-size",
+    "1024"
+  ],
+  "python_executable": "<PYTHON_EXECUTABLE>",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "2.4.0",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "device": "NVIDIA GeForce RTX 3090 Ti",
+  "source_git_commit": "77c40f7aab40d61ad98d99a5420c772b39c5a0a2",
+  "code_sha256_at_launch": {
+    "experiments_ext/run_v23_no_anchor.py": "88c86c57063c6d600f733fd5dc60b3b2122b8b3af5e80873060e8a03f23b73e1",
+    "experiments_ext/native_pointwise_v23.py": "136762371c3286e6177f97badb81a32bac3715c0d53e87f585cd568291c34b35",
+    "experiments_ext/raw_holdout_data.py": "e3462fbfffd45d9ad8a70497eccbc2425575c1220594cfddac5401e43c088807"
+  },
+  "input": {
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843,
+    "sha256": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589"
+  },
+  "tile": "E32N34",
+  "seed": 50,
+  "history_start_col": 11,
+  "history_length": 300,
+  "target_col": 312,
+  "sampler": "all_cells_uniform",
+  "anchor_enabled": false,
+  "epochs": 60,
+  "patience": 12,
+  "batch_size": 1024,
+  "protocol": "cageo-v23-final-no-anchor-ablation",
+  "completed_utc": "2026-07-30T00:46:54.374618+00:00",
+  "wall_seconds": 58.062934000001405,
+  "output_sha256": {
+    "spar_all_cells_uniform_no_anchor/best_model.pth": "9af0761acbaa4e85f5d726e7d3e86dbd9d594aea65ad29406a473a338e6e2ac4",
+    "spar_all_cells_uniform_no_anchor/direct_native_test_predictions.npz": "8ccf2a9106b8d72f2960ae076c12f51ba3ddfe633397bf156a159a69b98a3bf5",
+    "spar_all_cells_uniform_no_anchor/metrics.json": "d1997dd5557de1f520724884ce412bd91341c15682b2198dff4282b3d4ea4fc4",
+    "spar_all_cells_uniform_no_anchor/normalization.npz": "8f5aa1456a9f1c21835374f4135bd08aadcf7514799399c03bd789961872648d",
+    "spar_all_cells_uniform_no_anchor/training_history.csv": "36f003a03c1956d968104cc96f08053ed1dafbbb323157176f1d4b698fef4414",
+    "task_metadata.json": "69049baed47db4cbd697952aa6c329dc3951d40a7be832f5f2ffa76fb6c43653"
+  }
+}

@@ -1,15 +1,14 @@
-# Native-Support Sparse-to-Dense EGMS Forecasting
+# Native-Support Forecasting of Delivered EGMS Level-3 Values
 
 This repository hosts the reproducibility package for:
 
-`Native-Support Sparse-to-Dense EGMS Forecasting with Anchored Neural Residuals`
+`Native-Support Forecasting of Delivered EGMS Level-3 Displacement Values`
 
-Release `v2.2.0` makes the EGMS L3 native product-cell task explicit and adds:
-an exact product audit; persistence, dated linear-trend, and DLinear baselines;
-provenance-complete five-split LASSO/SPAR reruns; multi-resolution support
-evaluation; product-quality stratification; corrected repeated-holdout
-statistics; and refreshed paper figures. The original gridding-first CAGEO
-package remains under `experiments/` for traceability.
+Release `v2.3.0` adds the final all-cell SPAR configuration, pre-specified
+partitions 47--50, a same-support causal TCN, same-origin within-tile
+replication, a shortened-history temporal counter-test, ten analytic
+matched-interpolation realizations, and final sampler/anchor ablations. The
+original gridding-first package remains under `experiments/` for traceability.
 
 ## Repository layout
 
@@ -27,7 +26,7 @@ package remains under `experiments/` for traceability.
 - `experiments_ext/README.md`
 - `results/spar_v2/README.md`
 - `paper_figures/README.md`
-- `RELEASE_NOTES_v2.2.0.md`
+- `RELEASE_NOTES_v2.3.0.md`
 
 ## Quick start
 
@@ -50,22 +49,21 @@ python .\experiments_ext\run_saqr_synthetic_truth.py `
   --grid-size 64 --support-points 1024 --seed 42
 ```
 
-The historical CLI names beginning with `saqr` are retained so archived
-artifacts remain verifiable. In the paper and documentation the method is named
-**SPAR**. The authoritative E32N34 seed-43--46 frozen variant is
-`saqr_no_global_coord`; seed 42 and the original external/analytic artifacts use
-`saqr_point_query`. The release manifests preserve these identities explicitly.
+Historical CLI names beginning with `saqr` are retained so archived artifacts
+remain verifiable. The final v2.3 implementation is
+`direct_spar_all_cells_uniform`; in the paper and documentation it is named
+**SPAR**. The release manifests preserve both current and historical identities.
 
 ## Data and scope
 
-The primary study uses the E32N34 EGMS L3 Ortho product at one shared
-300-history-to-one-target forecast origin. Rows are valid cells of a partially
-populated native 100-m product lattice, not raw persistent scatterers. The
-primary endpoint is product-level predictive consistency at held-out valid
-cells; it is not independent validation of geodetic truth. Earlier external-tile
-controls remain in the package as development history but are not used to make
-a cross-region generalization claim. Transformer, STGCN, graph-model, and RSASE
-experiments are outside this release.
+The primary study uses E32N34 at one 300-history-to-one-target origin. Rows are
+valid cells of a partially populated native 100-m product lattice, not raw
+persistent scatterers. The primary endpoint is product-level predictive
+consistency, not independent geodetic truth. Partitions 47--50 overlap; the
+three additional tiles are independently trained same-origin replications, not
+transfer tests; and the 240-history origins are a counter-test, not temporal
+confirmation. Transformer, STGCN, graph-model, and RSASE experiments are
+outside this release.
 
 The source EGMS products are not redistributed in the Git repository. The
 versioned archive is available through the Zenodo concept DOI

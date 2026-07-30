@@ -1,0 +1,33 @@
+{
+  "protocol": "raw-target-pregrid-holdout-v1",
+  "tile": "E29N33",
+  "source_fingerprint": {
+    "path": "<LOCAL_WORKSPACE>/uk_ireland_ortho_extracted/EGMS_L3_E29N33_100km_U_2018_2022_1/EGMS_L3_E29N33_100km_U_2018_2022_1.csv",
+    "size_bytes": 209834854,
+    "mtime_ns": 1776076401294381500,
+    "header_sha256": "e7ed1bbc058017a233c0fda5fdc5ee8aa59cef6bc5b97d509143cecbb8117933"
+  },
+  "split_seed": 48,
+  "block_side": 8,
+  "buffer_blocks": 0,
+  "idw_neighbors": 8,
+  "idw_power": 2.0,
+  "raw_train_points": 100891,
+  "raw_val_points": 20811,
+  "raw_test_points": 23796,
+  "raw_buffer_points": 0,
+  "grid_train_cells": 34816,
+  "grid_val_cells": 9216,
+  "grid_test_cells": 10240,
+  "load_seconds": 2.240115300002799,
+  "interpolation_seconds": 1.767694300004223,
+  "test_target_used_in_any_target_grid": false,
+  "history_date_start": "20180106",
+  "history_date_end": "20221205",
+  "history_date_count": 300,
+  "skipped_dates": [
+    "20221211"
+  ],
+  "target_date": "20221217",
+  "forecast_horizon_days_from_last_history": 12
+}

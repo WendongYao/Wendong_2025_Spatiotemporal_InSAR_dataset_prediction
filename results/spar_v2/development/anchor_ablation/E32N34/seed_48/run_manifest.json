@@ -1,0 +1,60 @@
+{
+  "started_utc": "2026-07-30T00:43:50.922933+00:00",
+  "command": [
+    "<PYTHON_EXECUTABLE>",
+    "<REPO_ROOT>/experiments_ext/run_v23_no_anchor.py",
+    "--csv-path",
+    "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "--output-root",
+    "<REPO_ROOT>/results/R101_v23_anchor_ablation/E32N34/seed_48",
+    "--cache-dir",
+    "<REPO_ROOT>/results/_raw_task_cache",
+    "--seed",
+    "48",
+    "--epochs",
+    "60",
+    "--patience",
+    "12",
+    "--batch-size",
+    "1024"
+  ],
+  "python_executable": "<PYTHON_EXECUTABLE>",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy_version": "2.4.0",
+  "torch_version": "2.11.0+cu128",
+  "cuda_version": "12.8",
+  "device": "NVIDIA GeForce RTX 3090 Ti",
+  "source_git_commit": "77c40f7aab40d61ad98d99a5420c772b39c5a0a2",
+  "code_sha256_at_launch": {
+    "experiments_ext/run_v23_no_anchor.py": "88c86c57063c6d600f733fd5dc60b3b2122b8b3af5e80873060e8a03f23b73e1",
+    "experiments_ext/native_pointwise_v23.py": "136762371c3286e6177f97badb81a32bac3715c0d53e87f585cd568291c34b35",
+    "experiments_ext/raw_holdout_data.py": "e3462fbfffd45d9ad8a70497eccbc2425575c1220594cfddac5401e43c088807"
+  },
+  "input": {
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843,
+    "sha256": "1e52782806ed9e2957e1998ba2bca198c37219cc68ccd184e95a23c66bb3c589"
+  },
+  "tile": "E32N34",
+  "seed": 48,
+  "history_start_col": 11,
+  "history_length": 300,
+  "target_col": 312,
+  "sampler": "all_cells_uniform",
+  "anchor_enabled": false,
+  "epochs": 60,
+  "patience": 12,
+  "batch_size": 1024,
+  "protocol": "cageo-v23-final-no-anchor-ablation",
+  "completed_utc": "2026-07-30T00:44:50.929492+00:00",
+  "wall_seconds": 60.00704070000211,
+  "output_sha256": {
+    "spar_all_cells_uniform_no_anchor/best_model.pth": "436348a20f5a3bce396992cad57185847d2a9f684f64166dd16311071e3033a2",
+    "spar_all_cells_uniform_no_anchor/direct_native_test_predictions.npz": "aa4ef164cc44d18e40d1464be0d8cd549dd6da0ef2dd6e2a4b0cfc5d25976f41",
+    "spar_all_cells_uniform_no_anchor/metrics.json": "f52f9e800a2dbc1e9af4bc1ae52bd0dd0e109ab51b27e4203993ae2029f6798e",
+    "spar_all_cells_uniform_no_anchor/normalization.npz": "a00b3f8e1c8774cd44702987aa292e42851b8e9c2a06f71f499cdaebcf0fcab8",
+    "spar_all_cells_uniform_no_anchor/training_history.csv": "1c475e6e54362edbb723740edb5359d566d119d4a99d1277293f635916b56344",
+    "task_metadata.json": "d40d780c2a73c8779598da7e44152bde739b7e20e7d8140246da3cc2b3748350"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "generated_utc": "2026-07-30T00:12:03.288333+00:00",
+  "aggregator_sha256": "394e25643c04f4592e8f74ced43c7aba37d0813469e16669d669067b7a47aa34",
+  "files": {
+    "analytic_multiseed_rows.csv": {
+      "size_bytes": 1148,
+      "sha256": "26f2edee083462ad0aee6409b9205153346eb73cad01fa1f903d92a7cdc7a285"
+    },
+    "analytic_multiseed_summary.csv": {
+      "size_bytes": 352,
+      "sha256": "3116c1b2928a01289c61716053f5378d8aeab959c65963d6c8cda9cad270440c"
+    },
+    "locked_confirmation_paired_statistics.csv": {
+      "size_bytes": 1377,
+      "sha256": "161492c4e35754280579c7875323ef285c477d69cc506161d47392ea8993dc6a"
+    },
+    "locked_confirmation_rows.csv": {
+      "size_bytes": 3499,
+      "sha256": "d98fadd161d64eabd198b76bb903bbd9557e68965fdd2fc9fa128898322c44b5"
+    },
+    "locked_confirmation_summary.csv": {
+      "size_bytes": 762,
+      "sha256": "2ed5357564be1eee2979386383e3084af295c046ced04ed55c07f459b42aaa57"
+    },
+    "sampler_ablation.csv": {
+      "size_bytes": 860,
+      "sha256": "29c853a8d7025b305fa6c82dacfa960421d7255570ba170e0e10b58a850dc242"
+    },
+    "summary.json": {
+      "size_bytes": 9067,
+      "sha256": "6b41f450f41792f43cb7b34eb05330609617202309ac2cfc1c44fc5a4a19c1c0"
+    },
+    "temporal_origin_rows.csv": {
+      "size_bytes": 2533,
+      "sha256": "e171a7cbca79e0452e55d392fe5b85541924ef8341fd0b32fc13dca5507e245d"
+    },
+    "temporal_origin_summary.csv": {
+      "size_bytes": 618,
+      "sha256": "34070a15a4017b678846c90af195e863678b1b6d7517e00dc343c1fbab9719c8"
+    }
+  }
+}

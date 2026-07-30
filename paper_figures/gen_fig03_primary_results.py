@@ -6,38 +6,39 @@ from paper_plot_style import COLORS, locate_result, save_figure
 
 df = pd.read_csv(
     locate_result(
-        "results/R093_v22_aggregates/native_primary_models_multiseed.csv",
-        "results/spar_v2/aggregates/native_support_v2_2/native_primary_models_multiseed.csv",
-        "results/R083_priority_aggregates/primary_models_multiseed.csv",
-        "results/spar_v2/aggregates/priority_v2_1/primary_models_multiseed.csv",
+        "results/R098_v23_aggregates/locked_confirmation_rows.csv",
+        "results/spar_v2/aggregates/native_support_v2_3_core/locked_confirmation_rows.csv",
     )
 )
 
 methods = [
-    ("Persistence", "persistence", COLORS["neutral"]),
-    ("Linear trend", "linear_trend", COLORS["cyan"]),
-    ("DLinear", "dlinear", COLORS["warning"]),
-    ("LASSO", "lasso", COLORS["baseline"]),
-    ("LightGBM", "lightgbm", COLORS["secondary"]),
-    ("GRU", "gru", COLORS["purple"]),
-    ("SPAR", "spar", COLORS["ours"]),
+    ("Persistence", COLORS["neutral"], "X"),
+    ("DLinear", COLORS["warning"], "o"),
+    ("LASSO", COLORS["baseline"], "s"),
+    ("Causal TCN", COLORS["secondary"], "^"),
+    ("SPAR", COLORS["ours"], "D"),
 ]
 
 fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.8), gridspec_kw={"wspace": 0.34})
 
 ax = axes[0]
 positions = list(range(len(methods)))
-for _, row in df.iterrows():
-    values = [row[f"{key}_native_cell_rmse"] for _, key, _ in methods]
+for _, seed_frame in df.groupby("seed"):
+    values = [
+        seed_frame.loc[seed_frame["model"] == label, "rmse"].iloc[0]
+        for label, _, _ in methods
+    ]
     ax.plot(positions, values, color="#B8B8B8", linewidth=0.9, alpha=0.75, zorder=1)
-for position, (label, key, color) in enumerate(methods):
+for position, (label, color, marker) in enumerate(methods):
+    values = df.loc[df["model"] == label, "rmse"]
     ax.scatter(
-        [position] * len(df),
-        df[f"{key}_native_cell_rmse"],
+        [position] * len(values),
+        values,
         color=color,
         edgecolor="white",
         linewidth=0.35,
         s=34,
+        marker=marker,
         label=label,
         zorder=2,
     )
@@ -45,18 +46,19 @@ ax.set_xticks(positions, [label for label, _, _ in methods], rotation=15, ha="ri
 ax.set_xlim(-0.4, len(methods) - 0.6)
 ax.set_ylabel("Native-cell RMSE (mm)")
 ax.text(0.02, 0.97, "(a)", transform=ax.transAxes, ha="left", va="top", weight="bold")
-ax.text(0.98, 0.05, "SPAR lowest on all 5 partitions", transform=ax.transAxes, ha="right", color=COLORS["ours"])
+ax.text(0.98, 0.05, "SPAR lowest on all 4 locked partitions", transform=ax.transAxes, ha="right", color=COLORS["ours"])
 
 ax = axes[1]
-for label, key, color in methods:
-    rmse = df[f"{key}_native_cell_rmse"]
-    runtime = df[f"{key}_core_seconds"]
+for label, color, marker in methods:
+    method_frame = df.loc[df["model"] == label]
+    rmse = method_frame["rmse"]
+    runtime = method_frame["core_seconds"]
     ax.errorbar(
         runtime.mean(),
         rmse.mean(),
         xerr=runtime.std(ddof=1),
         yerr=rmse.std(ddof=1),
-        fmt="o",
+        fmt=marker,
         color=color,
         ecolor=color,
         elinewidth=0.9,
@@ -73,7 +75,7 @@ ax.grid(axis="both", color="#E5E5E5", linewidth=0.5, zorder=0)
 ax.legend(
     frameon=False,
     ncol=2,
-    loc="lower left",
+    loc="upper right",
     fontsize=6.7,
     columnspacing=0.7,
     handletextpad=0.3,

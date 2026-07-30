@@ -1,0 +1,33 @@
+{
+  "block_side": 8,
+  "buffer_blocks": 0,
+  "grid_test_cells": 8192,
+  "grid_train_cells": 41984,
+  "grid_val_cells": 6144,
+  "idw_neighbors": 8,
+  "idw_power": 2.0,
+  "interpolation_seconds": 1.974639500000194,
+  "load_seconds": 2.346070499999769,
+  "protocol": "raw-target-pregrid-holdout-v1",
+  "raw_buffer_points": 0,
+  "raw_test_points": 19146,
+  "raw_train_points": 89099,
+  "raw_val_points": 20512,
+  "source_fingerprint": {
+    "header_sha256": "e38d594b744528ec5c57f64c148390544eb3acb0dd8c7d106c8042ab641ef33c",
+    "mtime_ns": 1723195496748221100,
+    "path": "<LOCAL_WORKSPACE>/EGMS_L3_E32N34_100km_U_2018_2022_1.csv",
+    "size_bytes": 186241843
+  },
+  "split_seed": 50,
+  "test_target_used_in_any_target_grid": false,
+  "tile": "E32N34",
+  "history_date_start": "20180106",
+  "history_date_end": "20221205",
+  "history_date_count": 300,
+  "skipped_dates": [
+    "20221211"
+  ],
+  "target_date": "20221217",
+  "forecast_horizon_days_from_last_history": 12
+}

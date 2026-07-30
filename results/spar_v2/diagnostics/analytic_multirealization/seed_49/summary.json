@@ -1,0 +1,16 @@
+[
+  {
+    "model": "cnn_lstm_hybrid",
+    "input_interpolation": "idw",
+    "target_interpolation": "idw",
+    "operator_match": true,
+    "analytic_test_rmse": 0.6261752247810364,
+    "pseudo_target_test_rmse": 0.18165728449821472,
+    "pseudo_target_distortion_rmse": 0.57500821352005,
+    "optimism_gap_mm": 0.44451794028282166,
+    "training_seconds": 48.48656919999485,
+    "inference_seconds": 1.0576625000030617,
+    "best_epoch": 17,
+    "parameter_count": 424900
+  }
+]
